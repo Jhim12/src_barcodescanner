@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="src_barcodescanner.UpdateRecord">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" >
+
+                <Frame BackgroundColor="#49688e" CornerRadius="20" Margin="0,-5,0,0" HeightRequest="100" Grid.Row="0">
+                    <Grid ColumnDefinitions="*,Auto,Auto,Auto,Auto" VerticalOptions="CenterAndExpand">
+                        <Entry x:Name="Update_IPaddress" Grid.Column="0" Grid.Row="0" Placeholder="Enter IP address" HorizontalTextAlignment="Center"/>
+                        <Button Text="Connect with server" Grid.Column="0" Grid.Row="1" BackgroundColor="White" x:Name="Update_ConnectServer" TextColor="Black" Clicked="Update_ConnectServer_Clicked"/>
+                    </Grid>
+                </Frame>
+
+                <Frame CornerRadius="10" Grid.Row="1" BackgroundColor="#49688e" Margin="0,-5,0,0" HeightRequest="700">
+                    <TableView>
+                        <TableRoot>
+                            <TableSection>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label  Text="Update Record" FontSize="Title"  FontAttributes="Bold" TextColor="White"/>
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Asset tag:" VerticalOptions="CenterAndExpand" FontAttributes="Bold" />
+                                        <Entry  Text="{Binding assettag, Mode=TwoWay}" x:Name="Update_Assettag" Placeholder="Enter asset tag" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Asset Type:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry  Text="{Binding assettype, Mode=TwoWay}" x:Name="Update_Assettype" Placeholder="Enter asset type" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Device Name:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry  Text="{Binding devicename, Mode=TwoWay}" x:Name="Update_Devicename" Placeholder="Enter device name" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Brand:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry  Text="{Binding brand, Mode=TwoWay}"  x:Name="Update_Brand" Placeholder="Enter brand" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Model:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry  Text="{Binding model, Mode=TwoWay}"  x:Name="Update_Model" Placeholder="Enter model" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Serial Number:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry  Text="{Binding sn, Mode=TwoWay}"  x:Name="Update_Sn" Placeholder="Scan serial number" IsReadOnly="True" WidthRequest="175" VerticalOptions="CenterAndExpand"></Entry>
+                                        <Button x:Name="Update_Scanner" Clicked="Update_Scanner_Clicked" Text="Scan" TextColor="Black" BackgroundColor="white" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label  Text="Department:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry  Text="{Binding department, Mode=TwoWay}"  x:Name="Update_Department" Placeholder="Enter department" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label  Text="Location:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry  Text="{Binding location, Mode=TwoWay}"  x:Name="Update_Location" Placeholder="Enter location" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label  Text="Deviceuser:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry  Text="{Binding deviceuser, Mode=TwoWay}"  x:Name="Update_Deviceuser" Placeholder="Enter device user" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label  Text="Date:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <DatePicker  Date="{Binding datepurchased, Mode=TwoWay}"  x:Name="Update_Datepurchased" Format="dd/MM/yyyy" WidthRequest="200"></DatePicker>
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Price:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry  Text="{Binding price, Mode=TwoWay}"  x:Name="Update_Price" Placeholder="Enter price" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="HWdetail:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry  Text="{Binding HWdetail, Mode=TwoWay}" x:Name="Update_HWdetail" Placeholder="Enter HW detail" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Status:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry  Text="{Binding status, Mode=TwoWay}" x:Name="Update_Status" Placeholder="Enter status" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Button x:Name="Update_Record" Clicked="Update_Record_Clicked" TextColor="Black" Text="Update Record" BackgroundColor="white" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
+                                    </StackLayout>
+                                </ViewCell>
+
+
+                            </TableSection>
+                        </TableRoot>
+                    </TableView>
+                </Frame>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
