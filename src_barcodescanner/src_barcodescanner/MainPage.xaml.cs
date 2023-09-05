@@ -19,9 +19,9 @@ namespace src_barcodescanner
             await Navigation.PushAsync(new AddRecord());
         }
 
-        private async void ViewRecord_Clicked(object sender, EventArgs e)
+        private async void FindRecord_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ViewRecord());
+            await Navigation.PushAsync(new FindRecord());
         }
 
         private async void UpdateRecord_Clicked(object sender, EventArgs e)

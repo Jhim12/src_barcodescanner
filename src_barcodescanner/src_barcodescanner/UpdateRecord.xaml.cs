@@ -85,11 +85,12 @@ namespace src_barcodescanner
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await Navigation.PopAsync();
+                    Update_Assettag.Text = result.Text;
                     Update_Sn.Text = result.Text;
                     try
                     {
                         sqlConnection.Open();
-                        string queryString = $"Select * from dbo.tbldevice WHERE sn = '{Update_Sn.Text}'";
+                        string queryString = $"Select * from dbo.tbldevice WHERE sn = '{Update_Sn.Text}' OR assettag= '{Update_Assettag.Text}'";
                         SqlCommand command = new SqlCommand(queryString, sqlConnection);
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())

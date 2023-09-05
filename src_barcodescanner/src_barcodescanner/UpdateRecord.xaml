@@ -20,21 +20,21 @@
 
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                        <Label  Text="Update Record" FontSize="Title"  FontAttributes="Bold" TextColor="White"/>
+                                        <Label Text="Update Record" FontSize="Title"  FontAttributes="Bold" TextColor="White"/>
                                     </StackLayout>
                                 </ViewCell>
 
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label Text="Asset tag:" VerticalOptions="CenterAndExpand" FontAttributes="Bold" />
-                                        <Entry  Text="{Binding assettag, Mode=TwoWay}" x:Name="Update_Assettag" Placeholder="Enter asset tag" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                        <Entry IsReadOnly="True"  Text="{Binding assettag, Mode=TwoWay}" x:Name="Update_Assettag" Placeholder="Enter asset tag" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
                                     </StackLayout>
                                 </ViewCell>
 
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label Text="Asset Type:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                        <Entry  Text="{Binding assettype, Mode=TwoWay}" x:Name="Update_Assettype" Placeholder="Enter asset type" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                        <Entry IsReadOnly="True"  Text="{Binding assettype, Mode=TwoWay}" x:Name="Update_Assettype" Placeholder="Enter asset type" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
                                     </StackLayout>
                                 </ViewCell>
 
@@ -48,14 +48,14 @@
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label Text="Brand:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                        <Entry  Text="{Binding brand, Mode=TwoWay}"  x:Name="Update_Brand" Placeholder="Enter brand" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                        <Entry IsReadOnly="True" Text="{Binding brand, Mode=TwoWay}"  x:Name="Update_Brand" Placeholder="Enter brand" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
                                     </StackLayout>
                                 </ViewCell>
 
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label Text="Model:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                        <Entry  Text="{Binding model, Mode=TwoWay}"  x:Name="Update_Model" Placeholder="Enter model" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                        <Entry IsReadOnly="True" Text="{Binding model, Mode=TwoWay}"  x:Name="Update_Model" Placeholder="Enter model" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
                                     </StackLayout>
                                 </ViewCell>
 
@@ -91,21 +91,21 @@
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label  Text="Date:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                        <DatePicker  Date="{Binding datepurchased, Mode=TwoWay}"  x:Name="Update_Datepurchased" Format="dd/MM/yyyy" WidthRequest="200"></DatePicker>
+                                        <DatePicker IsEnabled="False"  Date="{Binding datepurchased, Mode=TwoWay}"  x:Name="Update_Datepurchased" Format="dd/MM/yyyy" WidthRequest="200"></DatePicker>
                                     </StackLayout>
                                 </ViewCell>
 
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label Text="Price:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                        <Entry  Text="{Binding price, Mode=TwoWay}"  x:Name="Update_Price" Placeholder="Enter price" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                        <Entry IsReadOnly="True"  Text="{Binding price, Mode=TwoWay}"  x:Name="Update_Price" Placeholder="Enter price" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
                                     </StackLayout>
                                 </ViewCell>
 
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label Text="HWdetail:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                        <Entry  Text="{Binding HWdetail, Mode=TwoWay}" x:Name="Update_HWdetail" Placeholder="Enter HW detail" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                        <Entry IsReadOnly="True" Text="{Binding HWdetail, Mode=TwoWay}" x:Name="Update_HWdetail" Placeholder="Enter HW detail" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
                                     </StackLayout>
                                 </ViewCell>
 

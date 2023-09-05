@@ -28,100 +28,101 @@
             </Frame>
 
                 <Frame CornerRadius="10" Grid.Row="1" BackgroundColor="#49688e" Margin="0,-5,0,0" HeightRequest="700">
-                <TableView>
-                    <TableRoot>
-                        <TableSection>
+                    <TableView>
+                        <TableRoot>
+                            <TableSection>
 
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <Label Text="Add Record" FontSize="Title"  FontAttributes="Bold" TextColor="White"/>
-                                </StackLayout>
-                            </ViewCell>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Add Record" FontSize="Title"  FontAttributes="Bold" TextColor="White"/>
+                                    </StackLayout>
+                                </ViewCell>
 
-                            <ViewCell>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                <Label Text="Asset tag:" VerticalOptions="CenterAndExpand" FontAttributes="Bold" />
-                                <Entry x:Name="Add_Assettag" Placeholder="Enter asset tag" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
-                            </StackLayout>
-                            </ViewCell>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Asset tag:" VerticalOptions="CenterAndExpand" FontAttributes="Bold" />
+                                        <Entry x:Name="Add_Assettag" Placeholder="Enter asset tag" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
 
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <Label Text="Asset Type:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Asset Type:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
                                         <Entry x:Name="Add_Assettype" Placeholder="Enter asset type" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
-                                </StackLayout>
-                            </ViewCell>
+                                    </StackLayout>
+                                </ViewCell>
 
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <Label Text="Device Name:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                    <Entry x:Name="Add_Devicename" Placeholder="Enter device name" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
-                                </StackLayout>
-                            </ViewCell>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Device Name:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry x:Name="Add_Devicename" Placeholder="Enter device name" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
 
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <Label Text="Brand:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                    <Entry x:Name="Add_Brand" Placeholder="Enter brand" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
-                                </StackLayout>
-                            </ViewCell>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Brand:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry x:Name="Add_Brand" Placeholder="Enter brand" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
 
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <Label Text="Model:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                    <Entry x:Name="Add_Model" Placeholder="Enter model" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
-                                </StackLayout>
-                            </ViewCell>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Model:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry x:Name="Add_Model" Placeholder="Enter model" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
 
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <Label Text="Serial Number:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                    <Entry x:Name="Add_Sn" Placeholder="Scan serial number" IsReadOnly="True" WidthRequest="175" VerticalOptions="CenterAndExpand"></Entry>
-                                    <Button x:Name="Add_Scanner" Clicked="Add_Scanner_Clicked" Text="Scan" TextColor="Black" BackgroundColor="white" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
-                                </StackLayout>
-                            </ViewCell>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Serial Number:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry x:Name="Add_Sn" Placeholder="Scan serial number" IsReadOnly="True" WidthRequest="175" VerticalOptions="CenterAndExpand"></Entry>
+                                        <Button x:Name="Add_Scanner" Clicked="Add_Scanner_Clicked" Text="Scan" TextColor="Black" BackgroundColor="white" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
+                                    </StackLayout>
+                                </ViewCell>
 
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <Label Text="Department:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                    <Entry x:Name="Add_Department" Placeholder="Enter department" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
-                                </StackLayout>
-                            </ViewCell>
 
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <Label Text="Location:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                    <Entry x:Name="Add_Location" Placeholder="Enter location" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
-                                </StackLayout>
-                            </ViewCell>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Department:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry x:Name="Add_Department" Placeholder="Enter department" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
 
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <Label Text="Device User:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                    <Entry x:Name="Add_Deviceuser" Placeholder="Enter device user" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
-                                </StackLayout>
-                            </ViewCell>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Location:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry x:Name="Add_Location" Placeholder="Enter location" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
 
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <Label Text="Date Purchased:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                    <DatePicker Format="dd/MM/yyyy" x:Name="Add_Datepurchased" WidthRequest="200"></DatePicker>
-                                </StackLayout>
-                            </ViewCell>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Device User:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry x:Name="Add_Deviceuser" Placeholder="Enter device user" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
 
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <Label Text="Price:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                    <Entry x:Name="Add_Price" Placeholder="Enter price" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
-                                </StackLayout>
-                            </ViewCell>
-                            
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <Label Text="HW detail:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                    <Entry x:Name="Add_HWdetail" Placeholder="Enter HW detail" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
-                                </StackLayout>
-                            </ViewCell>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Date Purchased:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <DatePicker Format="dd/MM/yyyy" x:Name="Add_Datepurchased" WidthRequest="200"></DatePicker>
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Price:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry x:Name="Add_Price" Placeholder="Enter price" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="HW detail:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Entry x:Name="Add_HWdetail" Placeholder="Enter HW detail" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                    </StackLayout>
+                                </ViewCell>
 
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
@@ -131,18 +132,18 @@
                                 </ViewCell>
 
                                 <ViewCell>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <Button x:Name="Add_Record" Clicked="Add_Record_Clicked" Text="Add Record" TextColor="Black" BackgroundColor="white" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
-                                </StackLayout>
-                            </ViewCell>
+                                    </StackLayout>
+                                </ViewCell>
 
 
                             </TableSection>
-                    </TableRoot>
-                </TableView>
-            </Frame>
-        
-    </Grid>
+                        </TableRoot>
+                    </TableView>
+                </Frame>
+
+            </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
@@ -68,6 +68,8 @@ namespace src_barcodescanner
 
         private async void Add_Scanner_Clicked(object sender, EventArgs e)
         {
+
+
             var scan = new ZXingScannerPage();
             await Navigation.PushAsync(scan);
             scan.OnScanResult += (result) =>
@@ -78,6 +80,8 @@ namespace src_barcodescanner
                     Add_Sn.Text = result.Text;
                 });
             };
+
+
         }
 
         private async void Add_Record_Clicked(object sender, EventArgs e)

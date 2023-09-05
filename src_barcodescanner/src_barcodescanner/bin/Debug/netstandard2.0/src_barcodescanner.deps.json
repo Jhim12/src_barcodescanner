@@ -13,6 +13,7 @@
           "System.Data.SqlClient": "4.8.5",
           "Xamarin.Essentials": "1.7.0",
           "Xamarin.Forms": "5.0.0.2196",
+          "ZXing.Net.Mobile": "3.1.0-beta2",
           "ZXing.Net.Mobile.Forms": "3.1.0-beta2"
         },
         "runtime": {

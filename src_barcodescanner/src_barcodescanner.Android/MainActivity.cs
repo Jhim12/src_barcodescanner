@@ -1,9 +1,9 @@
 ﻿using System;
-
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using System.Threading.Tasks;
 
 namespace src_barcodescanner.Droid
 {
@@ -25,4 +25,6 @@ namespace src_barcodescanner.Droid
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
+
+
 }
