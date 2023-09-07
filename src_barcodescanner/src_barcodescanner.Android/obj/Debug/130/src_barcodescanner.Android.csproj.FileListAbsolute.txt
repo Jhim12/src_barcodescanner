@@ -1312,3 +1312,5 @@ C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescann
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\stamp\_GenerateJavaStubs.stamp
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\res\drawable\src_logo.png
+C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\res\drawable\src_logo_trans.png

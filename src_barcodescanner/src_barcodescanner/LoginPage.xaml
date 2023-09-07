@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="src_barcodescanner.LoginPage" 
+             BackgroundColor="#49688e">
+  
+    <ContentPage.Content>
+        <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+
+            <Image Grid.Column="0" Source="src_logo_trans.png" Aspect="AspectFit" WidthRequest="180" HeightRequest="180"/>
+
+            <Entry x:Name="Login_UserName" Placeholder="Username" TextColor="White" PlaceholderColor="Gray"></Entry>
+            <Entry x:Name="Login_Password" Placeholder="Password" IsPassword="True" TextColor="White" PlaceholderColor="Gray"></Entry>
+            <Button
+                x:Name="Login"
+                Clicked="Login_Clicked"
+                VerticalOptions="Center"
+                Text="Login"
+                TextColor="White"
+                BackgroundColor="Transparent"
+                BorderColor="White"
+                BorderWidth="1.5"
+                CornerRadius="50">
+            </Button>
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

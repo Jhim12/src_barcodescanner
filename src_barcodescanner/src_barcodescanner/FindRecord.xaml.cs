@@ -115,11 +115,17 @@ namespace src_barcodescanner
 
                     }
                     );
+
+
+
+
                 }
                 reader.Close();
                 sqlConnection.Close();
 
                 MyFind.ItemsSource = myTableLists;
+                Find_HWDetail.ItemsSource = myTableLists;
+                
             }
             catch (Exception ex)
             {

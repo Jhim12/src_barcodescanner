@@ -25,47 +25,122 @@ namespace src_barcodescanner
             public string model { get; set; }
             public string sn { get; set; }
             public string department { get; set; }
-            public string location { get; set; }
-            public string deviceuser { get; set; }
             public DateTime datepurchased { get; set; }
             public float price { get; set; }
             public string HWdetail { get; set; }
-            public string status { get; set; }
         }
 
         SqlConnection sqlConnection;
 
+
+
         public AddRecord ()
 		{
 			InitializeComponent ();
-		}
 
-        private async void Add_ConnectServer_Clicked(object sender, EventArgs e)
-        {
-            //
+            // Need this code to number only in the entry price
+            Add_Price.TextChanged += Entry_TextChanged;
+            //Need this code to number only in the entry price
+
+
+            // This line of codes is the creadentials and connection string
             string serverdbname = "src_db";
+            string servername = "10.0.0.144";
             string serverusername = "sa";
             string serverpassword = "masterfile";
-            string sqlconn = $"Data Source={Add_IPaddress.Text};Initial Catalog={serverdbname};User ID={serverusername};Password={serverpassword}";
-            sqlConnection = new SqlConnection(sqlconn);
-            //
 
-            sqlConnection.Open();
-            await App.Current.MainPage.DisplayAlert("Alert", "Connection Establish", "Ok");
-            sqlConnection.Close();
+            string sqlconn = $"Data Source={servername};Initial Catalog={serverdbname};User ID={serverusername};Password={serverpassword}";
+            sqlConnection = new SqlConnection(sqlconn);
+            //This line of codes is the creadentials and connection string
+
+            // This line codes is for asset tag to concatenate the Asset type, Date Today, and New Increment ID
             try
             {
+                sqlConnection.Open();
 
+                string query = "SELECT IDENT_CURRENT('tbldevice') + 1  AS NewIncrementValue";
+                SqlCommand command = new SqlCommand(query, sqlConnection);
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    // Get the current date and format it as ddMMyyyy
+                    string currentDate = DateTime.Now.ToString("ddMMyyyy");
+
+                    // Get the new increment value
+                    int newIncrementValue = Convert.ToInt32(reader["NewIncrementValue"]);
+
+                    string assetTag = currentDate;
+
+                    Add_Assettype.SelectedIndexChanged += (sender, e) =>
+                    {
+                        if (Add_Assettype.SelectedIndex >= 0)
+                        {
+                            string selectedAssetType = Add_Assettype.Items[Add_Assettype.SelectedIndex];
+
+                            // Define a prefix for each asset type
+                            string assetTagPrefix = "";
+
+                            // Set the text of the Entry based on the selected asset type
+                            switch (selectedAssetType)
+                            {
+                                case "Desktop":
+                                    assetTagPrefix = "PC";
+                                    break;
+                                case "Printer":
+                                    assetTagPrefix = "PRN";
+                                    break;
+                                case "Access point":
+                                    assetTagPrefix = "AP";
+                                    break;
+                                case "Others":
+                                    assetTagPrefix = "OTR";
+                                    break;
+                                default:
+                                    assetTagPrefix = "";
+                                    break;
+                            }
+
+                            // Concatenate the prefix with the current date and increment value
+                            Add_Assettag.Text = assetTagPrefix + currentDate + newIncrementValue.ToString();
+                        }
+                    };
+
+                }
+                reader.Close();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-
-                throw;
-
+                // Handle any exceptions that may occur while executing the query
+                Console.WriteLine("Error: " + ex.Message);
             }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            // This line of codes is for asset tag to concatenate the Asset type, Date Today, and New Increment ID
+
+
+            //END
         }
 
+        // Need this method to number only in the entry price
+        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(e.NewTextValue))
+            {
+                // Check if the input is a valid numeric value
+                if (!double.TryParse(e.NewTextValue, out _))
+                {
+                    // If it's not a valid numeric value, clear the Entry's text
+                    Add_Price.Text = "";
+                }
+            }
+        }
+        // Need this method to number only in the entry price
+
+
+        // This line codes is for Scanner and get the Serial Number of the Asset tag in the barcode
         private async void Add_Scanner_Clicked(object sender, EventArgs e)
         {
 
@@ -83,26 +158,69 @@ namespace src_barcodescanner
 
 
         }
+        // This line codes is for Scanner and get the Serial Number of the Asset tag in the barcode
 
+
+
+        // This line codes is for Add record
         private async void Add_Record_Clicked(object sender, EventArgs e)
         {
+            // Declaration for required data and to input it to the database sample is the asset type and date purchased
+            string assettag = Add_Assettag.Text;
+            string selectedAssetType = Add_Assettype.SelectedItem as string;
+            string deviceName = Add_Devicename.Text;
+            string brand = Add_Brand.Text;
+
+
+
             DateTime selectedDate = Add_Datepurchased.Date;
+
+
+
+            // Check if the device name is empty
+            if (string.IsNullOrWhiteSpace(assettag))
+            {
+                DisplayAlert("Validation Error", "Asset Tag is required.", "OK");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(selectedAssetType))
+            {
+                DisplayAlert("Validation Error", "Asset Tag is required.", "OK");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(deviceName))
+            {
+                DisplayAlert("Validation Error", "Device Name is required.", "OK");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(deviceName))
+            {
+                DisplayAlert("Validation Error", "Device Name is required.", "OK");
+                return;
+            }
+            // Check if the device name is empty
+
+
+
+
+
+
             try
             {
-
                 sqlConnection.Open();
-                using (SqlCommand command = new SqlCommand("INSERT INTO dbo.tbldevice (assettag, assettype, devicename, brand, model, sn, department, location, deviceuser, datepurchased, price, HWdetail, status)" +
-                    " VALUES (@assettag, @assettype, @devicename, @brand, @model, @sn, @department, @location, @deviceuser, @datepurchased, @price, @HWdetail, @status)", sqlConnection))
+                using (SqlCommand command = new SqlCommand("INSERT INTO dbo.tbldevice (assettag, assettype, devicename, brand, model, sn, department, datepurchased, price, HWdetail)" +
+                    " VALUES (@assettag, @assettype, @devicename, @brand, @model, @sn, @department, @datepurchased, @price, @HWdetail)", sqlConnection))
                 {
                     command.Parameters.AddWithValue("@assettag", Add_Assettag.Text);
-                    command.Parameters.AddWithValue("@assettype", Add_Assettype.Text);
+                    command.Parameters.AddWithValue("@assettype", selectedAssetType);
                     command.Parameters.AddWithValue("@devicename", Add_Devicename.Text);
                     command.Parameters.AddWithValue("@brand", Add_Brand.Text);
                     command.Parameters.AddWithValue("@model", Add_Model.Text);
                     command.Parameters.AddWithValue("@sn", Add_Sn.Text);
                     command.Parameters.AddWithValue("@department", Add_Department.Text);
-                    command.Parameters.AddWithValue("@location", Add_Location.Text);
-                    command.Parameters.AddWithValue("@deviceuser", Add_Deviceuser.Text);
 
                     // Convert and set the DateTime value with SqlDbType.Date
                     SqlParameter datePurchasedParameter = new SqlParameter("@datepurchased", System.Data.SqlDbType.Date);
@@ -111,14 +229,24 @@ namespace src_barcodescanner
 
                     command.Parameters.AddWithValue("@price", Add_Price.Text);
                     command.Parameters.AddWithValue("@HWdetail", Add_HWdetail.Text);
-                    command.Parameters.AddWithValue("@status", Add_Status.Text);
                     command.ExecuteNonQuery();
 
                 }
                 sqlConnection.Close();
                 await App.Current.MainPage.DisplayAlert("Alert", "Congrats you just posted data", "Ok");
 
+                // Clear fields
+                Add_Assettag.Text = string.Empty;
+                // To set the selected item to "Select asset type" (clear selection)
+                Add_Assettype.SelectedIndex = -1;
+                Add_Devicename.Text = string.Empty;
+                Add_Assettag.Text = string.Empty;
 
+
+
+
+
+                await Navigation.PushAsync(new MainPage());
             }
             catch (Exception ex)
             {
@@ -126,6 +254,9 @@ namespace src_barcodescanner
                 throw;
             }
         }
+        // This line codes is for Add record
 
+
+        // END
     }
 }

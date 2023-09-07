@@ -34,3 +34,6 @@ C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescann
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner\obj\Debug\netstandard2.0\refint\src_barcodescanner.dll
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner\obj\Debug\netstandard2.0\src_barcodescanner.pdb
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner\obj\Debug\netstandard2.0\FindRecord.xaml.g.cs
+C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner\obj\Debug\netstandard2.0\ViewRecords.xaml.g.cs
+C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner\obj\Debug\netstandard2.0\LoginPage.xaml.g.cs
+C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner\obj\Debug\netstandard2.0\ScannerPage.xaml.g.cs

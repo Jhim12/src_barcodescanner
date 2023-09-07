@@ -13,6 +13,7 @@ namespace src_barcodescanner
         public MainPage()
         {
             InitializeComponent();
+
         }
         private async void AddRecord_Clicked(object sender, EventArgs e)
         {
@@ -28,6 +29,16 @@ namespace src_barcodescanner
         {
             await Navigation.PushAsync(new UpdateRecord());
 
+        }
+
+        private async void ViewRecords_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ViewRecords());
+        }
+
+        private async void LoginPage_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LoginPage());
         }
     }
 }

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="src_barcodescanner.MainPage"
              Title="Dashboard"
+
              BackgroundColor="White">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" >
@@ -13,16 +14,23 @@
                 </Grid>
             </Frame>
 
-            <Frame CornerRadius="10" Grid.Row="1" BackgroundColor="#49688e" Margin="10,10,10,0">
-                <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,*" RowSpacing="10">
-                    <Label Grid.Column="0" Grid.Row="0" TextColor="#08457E"  FontFamily="" Text="" FontSize="20"  ></Label> <!--Place Icon Here-->
-                    <Label Grid.Column="1" Grid.Row="0" Text="Santa Rita College" HorizontalTextAlignment="Center" TextColor="White"></Label>
-                    <Label Grid.Column="0" Grid.Row="1" TextColor="#08457E"  FontFamily="" Text="" FontSize="20"  ></Label><!--Place Icon Here-->
-                    <Label Grid.Column="1" Grid.Row="1" Text="Barcode" HorizontalTextAlignment="Center" TextColor="White"></Label>
-                    <Label Grid.Column="0" Grid.Row="2" TextColor="#08457E"  FontFamily="" Text="" FontSize="20"  ></Label><!--Place Icon Here-->
-                    <Label Grid.Column="1" Grid.Row="2" Text="Scanner" HorizontalTextAlignment="Center" TextColor="White"></Label>
+            <Frame CornerRadius="10" Grid.Row="1" BackgroundColor="#49688e" HeightRequest="150" Margin="10,10,10,0">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.Column="0" Source="src_logo.png" Aspect="AspectFit" WidthRequest="190" />
+
+                    <Editor Text="Santa Rita College Barcode Scanner" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" IsReadOnly="True"></Editor>
+
                 </Grid>
+
+
             </Frame>
+
 
             <Grid Margin="10" Grid.Row="2" RowDefinitions="Auto,Auto" ColumnDefinitions="*,*" RowSpacing="10" ColumnSpacing="10">
                 <Frame HeightRequest="75" WidthRequest="200" Grid.Row="0" Grid.Column="0" BackgroundColor="#294a70"  CornerRadius="5" HorizontalOptions="CenterAndExpand">
@@ -35,7 +43,11 @@
                     <Button  Text="Update Record" x:Name="UpdateRecord" BackgroundColor="White" TextColor="Black"  Clicked="UpdateRecord_Clicked"/>
                 </Frame>
                 <Frame HeightRequest="75" WidthRequest="200" Grid.Row="1" Grid.Column="1" BackgroundColor="#294a70" HasShadow="True" CornerRadius="5"  HorizontalOptions="CenterAndExpand">
-                    <Button  Text="View Records" BackgroundColor="White" TextColor="Black"/>
+                    <Button  Text="View Records" BackgroundColor="White" x:Name="ViewRecords" Clicked="ViewRecords_Clicked" TextColor="Black"/>
+                </Frame>
+
+                <Frame HeightRequest="75" WidthRequest="200" Grid.Row="2" Grid.Column="1" BackgroundColor="#294a70" HasShadow="True" CornerRadius="5"  HorizontalOptions="CenterAndExpand">
+                    <Button  Text="Log in Page" BackgroundColor="White" x:Name="LoginPage" Clicked="LoginPage_Clicked" TextColor="Black"/>
                 </Frame>
 
             </Grid>
