@@ -51,7 +51,7 @@
                     </TableView>
                 </Frame>
 
-                <Frame CornerRadius="20" Grid.Row="2" BackgroundColor="#49688e" HeightRequest="400" Margin="0,-5,0,0">
+                <Frame CornerRadius="20" Grid.Row="2" BackgroundColor="#49688e" HeightRequest="350" Margin="0,-5,0,0">
 
                     <ListView x:Name="MyFind" HasUnevenRows="True" Footer="">
                         <ListView.ItemTemplate>
@@ -104,7 +104,7 @@
                     </ListView>
             </Frame>
 
-                <Frame CornerRadius="20" Grid.Row="3" BackgroundColor="#49688e" HeightRequest="300" Margin="0,-5,0,0">
+                <Frame CornerRadius="20" Grid.Row="3" BackgroundColor="#49688e" HeightRequest="250" Margin="0,-5,0,0">
 
                     <ListView x:Name="Find_HWDetail" HasUnevenRows="True" Footer="">
                         <ListView.ItemTemplate>

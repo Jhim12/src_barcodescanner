@@ -81,7 +81,7 @@ namespace src_barcodescanner
                             // Define a prefix for each asset type
                             string assetTagPrefix = "";
 
-                            // Set the text of the Entry based on the selected asset type
+                            // This is Combo box Set the text of the Entry based on the selected asset type
                             switch (selectedAssetType)
                             {
                                 case "Desktop":
@@ -90,16 +90,47 @@ namespace src_barcodescanner
                                 case "Printer":
                                     assetTagPrefix = "PRN";
                                     break;
-                                case "Access point":
-                                    assetTagPrefix = "AP";
+                                case "Access Point":
+                                    assetTagPrefix = "NET";
                                     break;
-                                case "Others":
-                                    assetTagPrefix = "OTR";
+                                case "Switch":
+                                    assetTagPrefix = "NET";
+                                    break;
+                                case "Router":
+                                    assetTagPrefix = "NET";
+                                    break;
+                                case "Hub":
+                                    assetTagPrefix = "NET";
+                                    break;
+                                case "Laptop":
+                                    assetTagPrefix = "PC";
+                                    break;
+                                case "Thin Client":
+                                    assetTagPrefix = "PC";
+                                    break;
+                                case "Monitor":
+                                    assetTagPrefix = "PC";
+                                    break;
+                                case "KB/M":
+                                    assetTagPrefix = "PC";
+                                    break;
+                                case "Multimedia":
+                                    assetTagPrefix = "MM";
+                                    break;
+                                case "All-in-One":
+                                    assetTagPrefix = "PC";
+                                    break;
+                                case "Spare parts":
+                                    assetTagPrefix = "SP";
+                                    break;
+                                case "Camera":
+                                    assetTagPrefix = "CAM";
                                     break;
                                 default:
                                     assetTagPrefix = "";
                                     break;
                             }
+                            // This is Combo box Set the text of the Entry based on the selected asset type
 
                             // Concatenate the prefix with the current date and increment value
                             Add_Assettag.Text = assetTagPrefix + currentDate + newIncrementValue.ToString();
@@ -124,7 +155,7 @@ namespace src_barcodescanner
             //END
         }
 
-        // Need this method to number only in the entry price
+        // Need this method to type number only in the entry price
         private void Entry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(e.NewTextValue))
@@ -137,7 +168,7 @@ namespace src_barcodescanner
                 }
             }
         }
-        // Need this method to number only in the entry price
+        // Need this method to type number only in the entry price
 
 
         // This line codes is for Scanner and get the Serial Number of the Asset tag in the barcode
@@ -170,6 +201,9 @@ namespace src_barcodescanner
             string selectedAssetType = Add_Assettype.SelectedItem as string;
             string deviceName = Add_Devicename.Text;
             string brand = Add_Brand.Text;
+            string model = Add_Model.Text;
+            string sn = Add_Sn.Text;
+            string selectedDepartment = Add_Department.SelectedItem as string;
 
 
 
@@ -201,6 +235,24 @@ namespace src_barcodescanner
                 DisplayAlert("Validation Error", "Device Name is required.", "OK");
                 return;
             }
+
+            if (string.IsNullOrWhiteSpace(brand))
+            {
+                DisplayAlert("Validation Error", "Brand is required.", "OK");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(model))
+            {
+                DisplayAlert("Validation Error", "Model is required.", "OK");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(sn))
+            {
+                DisplayAlert("Validation Error", "Model is required.", "OK");
+                return;
+            }
             // Check if the device name is empty
 
 
@@ -220,7 +272,7 @@ namespace src_barcodescanner
                     command.Parameters.AddWithValue("@brand", Add_Brand.Text);
                     command.Parameters.AddWithValue("@model", Add_Model.Text);
                     command.Parameters.AddWithValue("@sn", Add_Sn.Text);
-                    command.Parameters.AddWithValue("@department", Add_Department.Text);
+                    command.Parameters.AddWithValue("@department", selectedDepartment);
 
                     // Convert and set the DateTime value with SqlDbType.Date
                     SqlParameter datePurchasedParameter = new SqlParameter("@datepurchased", System.Data.SqlDbType.Date);
@@ -240,10 +292,13 @@ namespace src_barcodescanner
                 // To set the selected item to "Select asset type" (clear selection)
                 Add_Assettype.SelectedIndex = -1;
                 Add_Devicename.Text = string.Empty;
-                Add_Assettag.Text = string.Empty;
-
-
-
+                Add_Brand.Text = string.Empty;
+                Add_Model.Text = string.Empty;
+                Add_Sn.Text = string.Empty;
+                Add_Department.SelectedIndex = -1;
+                Add_Price.Text = string.Empty;
+                Add_HWdetail.Text = string.Empty;
+                // Clear fields
 
 
                 await Navigation.PushAsync(new MainPage());

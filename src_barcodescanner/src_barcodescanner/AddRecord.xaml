@@ -10,7 +10,7 @@
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" >
 
 
-                <Frame CornerRadius="10" Grid.Row="0" BackgroundColor="#49688e" Margin="0,-5,0,0" HeightRequest="550">
+                <Frame CornerRadius="10" Grid.Row="0" BackgroundColor="#49688e" Margin="0,-5,0,0" HeightRequest="450">
                     <TableView>
                         <TableRoot>
                             <TableSection>
@@ -37,8 +37,18 @@
                                                 <x:Array Type="{x:Type x:String}">
                                                     <x:String>Desktop</x:String>
                                                     <x:String>Printer</x:String>
-                                                    <x:String>Access point</x:String>
-                                                    <x:String>Others</x:String>
+                                                    <x:String>Access Point</x:String>
+                                                    <x:String>Switch</x:String>
+                                                    <x:String>Router</x:String>
+                                                    <x:String>Hub</x:String>
+                                                    <x:String>Laptop</x:String>
+                                                    <x:String>Thin Client</x:String>
+                                                    <x:String>Monitor</x:String>
+                                                    <x:String>KB/M</x:String>
+                                                    <x:String>Multimedia</x:String>
+                                                    <x:String>All-in-One</x:String>
+                                                    <x:String>Spare parts</x:String>
+                                                    <x:String>Camera</x:String>
                                                 </x:Array>
                                             </Picker.ItemsSource>
                                         </Picker>
@@ -69,9 +79,9 @@
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label Text="Serial Number:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                        <Entry x:Name="Add_Sn" Placeholder="Scan serial number" IsReadOnly="True" WidthRequest="175" VerticalOptions="CenterAndExpand"></Entry>
+                                        <Entry x:Name="Add_Sn" Placeholder="Scan serial number" IsReadOnly="False" WidthRequest="175" VerticalOptions="CenterAndExpand"></Entry>
                                         <Button  x:Name="Add_Scanner" Clicked="Add_Scanner_Clicked" Text="Scan" TextColor="Black" BackgroundColor="white" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
-                                        
+
                                     </StackLayout>
                                 </ViewCell>
 
@@ -79,7 +89,20 @@
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label Text="Department:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                        <Entry x:Name="Add_Department" Placeholder="Enter department" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                        <Picker x:Name="Add_Department" Title="Select Department" WidthRequest="200" VerticalOptions="CenterAndExpand">
+                                            <Picker.ItemsSource>
+                                                <x:Array Type="{x:Type x:String}">
+                                                    <x:String>Administration</x:String>
+                                                    <x:String>Junior HS</x:String>
+                                                    <x:String>Elementary</x:String>
+                                                    <x:String>College</x:String>
+                                                    <x:String>SRC Annex 1</x:String>
+                                                    <x:String>Senior HS</x:String>
+                                                    <x:String>Others</x:String>
+                                                    <x:String>High School</x:String>
+                                                </x:Array>
+                                            </Picker.ItemsSource>
+                                        </Picker>
                                     </StackLayout>
                                 </ViewCell>
 
@@ -97,26 +120,32 @@
                                     </StackLayout>
                                 </ViewCell>
 
-                                <ViewCell>
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                        <Button x:Name="Add_Record" Clicked="Add_Record_Clicked" Text="Add Record" TextColor="Black" BackgroundColor="white" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
-                                    </StackLayout>
-                                </ViewCell>
-
-
                             </TableSection>
                         </TableRoot>
                     </TableView>
                 </Frame>
 
-                <Frame CornerRadius="20" Grid.Row="1" BackgroundColor="#49688e" HeightRequest="300" Margin="0,-5,0,0">
+                <Frame CornerRadius="20" Grid.Row="1" BackgroundColor="#49688e" HeightRequest="250" Margin="0,-5,0,0">
+                    <StackLayout>
+                        <ScrollView>
+                            <Grid RowDefinitions="Auto,Auto,Auto">
+
+                                <Label Grid.Column="0" Grid.Row="1"  Text="Specification" FontAttributes="Bold" FontSize="Title" TextColor="White"></Label>
+
+                                <Editor x:Name="Add_HWdetail"  Placeholder="Type here" AutoSize="TextChanges" WidthRequest="200" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.Row="2" TextColor="White"></Editor>
+
+                            </Grid>
+                        </ScrollView>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Grid.Row="2" CornerRadius="20" BackgroundColor="#49688e" HeightRequest="50" Margin="0,-5,0,0">
                     <StackLayout>
                         <Grid RowDefinitions="Auto,Auto,Auto">
 
-                            <Label Grid.Column="0" Grid.Row="1"  Text="Specification" FontAttributes="Bold" FontSize="Title" TextColor="White"></Label>
+                                <Button x:Name="Add_Record" Grid.Row="1" Clicked="Add_Record_Clicked" Text="Add Record" TextColor="Black" BackgroundColor="white" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
 
-                            <Editor x:Name="Add_HWdetail" Placeholder="Enter HW detail" WidthRequest="200" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.Row="2" TextColor="black"></Editor>
-                        </Grid>
+                            </Grid>
                     </StackLayout>
                 </Frame>
 
