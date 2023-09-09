@@ -1,103 +1,134 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="src_barcodescanner.ViewRecords">
+             x:Class="src_barcodescanner.ViewRecords"
+             BackgroundColor="Gray">
     <ContentPage.Content>
-        <ScrollView>
-            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" >
+        <ScrollView HorizontalScrollBarVisibility="Default" Orientation="Horizontal">
+            <StackLayout Padding="0" Spacing="0">
 
-                <Frame BackgroundColor="#49688e" CornerRadius="20" Margin="0,-5,0,0" HeightRequest="100" Grid.Row="0">
-                    <TableView>
-                        <TableRoot>
-                            <TableSection>
-                                <ViewCell>
-                                    <StackLayout>
-                                        <Entry x:Name="View_IPaddress" Placeholder="Enter IP Address" HorizontalTextAlignment="Center"/>
-                                    </StackLayout>
-                                </ViewCell>
+            <Label Margin="0, 0, 0, 20" FontSize="Title" Text="View Records" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
 
-                                <ViewCell>
-                                    <StackLayout>
-                                        <Button Text="Connect with server" BackgroundColor="White" x:Name="View_ConnectServer" TextColor="Black" Clicked="View_ConnectServer_Clicked"/>
-                                    </StackLayout>
-                                </ViewCell>
+            
+            <Frame BackgroundColor="White" BorderColor="Gray" Padding="0">
+                <Grid Padding="0">
+                    <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="125"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="125"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="125"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="125"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
 
-                            </TableSection>
-                        </TableRoot>
-                    </TableView>
-                </Frame>
-
-                <Frame CornerRadius="20" Grid.Row="1" BackgroundColor="#49688e" HeightRequest="50" Margin="0,-5,0,0">
-                    <TableView>
-                        <TableRoot>
-                            <TableSection>
-
-                                <ViewCell>
-                                    <StackLayout Padding="0,5,0,0" Margin="0,0,0,0">
-                                        <Button Clicked="View_Record_Clicked" x:Name="View_Record" Text="View Records" BackgroundColor="White" TextColor="Black" />
-                                    </StackLayout>
-                                </ViewCell>
-
-                            </TableSection>
-                        </TableRoot>
-                    </TableView>
-                </Frame>
-
-                <Frame CornerRadius="20" Grid.Row="2" BackgroundColor="#49688e" HeightRequest="400" Margin="0,-5,0,0">
-
-                    <ListView x:Name="MyView" HasUnevenRows="True" Footer="">
-
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid RowDefinitions="Auto,Auto,Auto">
-
-                                        <Label Grid.Column="0" Grid.Row="1"  Text="Record" FontAttributes="Bold" FontSize="Default" TextColor="White"></Label>
-
-                                        <Label Grid.Column="0" Grid.Row="2" Text="Asset tag: " TextColor="Black" FontAttributes="Bold"></Label>
-                                        <Label Grid.Column="1" Grid.Row="2" Text="{Binding assettag}" TextColor="Black" ></Label>
-
-                                        <Label Grid.Column="0" Grid.Row="3" Text="Asset Type: " TextColor="Black" FontAttributes="Bold"></Label>
-                                        <Label Grid.Column="1" Grid.Row="3" Text="{Binding assettype}" TextColor="Black" ></Label>
-
-                                        <Label Grid.Column="0" Grid.Row="4" Text="Device Name: " TextColor="Black" FontAttributes="Bold"></Label>
-                                        <Label Grid.Column="1" Grid.Row="4" Text="{Binding devicename}" TextColor="Black" ></Label>
-
-                                        <Label Grid.Column="0" Grid.Row="5" Text="Brand: " TextColor="Black" FontAttributes="Bold"></Label>
-                                        <Label Grid.Column="1" Grid.Row="5" Text="{Binding brand}" TextColor="Black" ></Label>
-
-                                        <Label Grid.Column="0" Grid.Row="6" Text="Model: " TextColor="Black" FontAttributes="Bold"></Label>
-                                        <Label Grid.Column="1" Grid.Row="6" Text="{Binding model}" TextColor="black" ></Label>
-
-                                        <Label Grid.Column="0" Grid.Row="7" Text="Serial Number: " TextColor="Black" FontAttributes="Bold"></Label>
-                                        <Label Grid.Column="1" Grid.Row="7" Text="{Binding sn}" TextColor="black" ></Label>
-
-                                        <Label Grid.Column="0" Grid.Row="8" Text="Department: " TextColor="Black" FontAttributes="Bold"></Label>
-                                        <Label Grid.Column="1" Grid.Row="8" Text="{Binding department}" TextColor="black" ></Label>
-
-                                        <Label Grid.Column="0" Grid.Row="9" Text="Location: " TextColor="Black" FontAttributes="Bold"></Label>
-                                        <Label Grid.Column="1" Grid.Row="9" Text="{Binding location}" TextColor="black" ></Label>
-
-                                        <Label Grid.Column="0" Grid.Row="10" Text="Device User: " TextColor="Black" FontAttributes="Bold"></Label>
-                                        <Label Grid.Column="1" Grid.Row="10" Text="{Binding deviceuser}" TextColor="black" ></Label>
+                    <Label Margin="10,0,10,0" Text="id" TextColor="Black" VerticalOptions="Center" Grid.Column="0"/>
+                    <Label Margin="10,0,10,0" Text="assettag" TextColor="Black" VerticalOptions="Center" Grid.Column="1"/>
+                    <Label Margin="10,0,10,0" Text="assettype" TextColor="Black" VerticalOptions="Center" Grid.Column="2"/>
+                    <Label Margin="10,0,10,0" Text="devicename" TextColor="Black" VerticalOptions="Center" Grid.Column="3"/>
+                    <Label Margin="10,0,10,0" Text="brand" TextColor="Black" VerticalOptions="Center" Grid.Column="4"/>
+                    <Label Margin="10,0,10,0" Text="model" TextColor="Black" VerticalOptions="Center" Grid.Column="5"/>
+                    <Label Margin="10,0,10,0" Text="sn" TextColor="Black" VerticalOptions="Center" Grid.Column="6"/>
+                    <Label Margin="10,0,10,0" Text="department" TextColor="Black" VerticalOptions="Center" Grid.Column="7"/>
+                    <Label Margin="10,0,10,0" Text="location" TextColor="Black" VerticalOptions="Center" Grid.Column="8"/>
+                    <Label Margin="10,0,10,0" Text="deviceuser" TextColor="Black" VerticalOptions="Center" Grid.Column="9"/>
+                    <Label Margin="10,0,10,0" Text="datepurchased" TextColor="Black" VerticalOptions="Center" Grid.Column="10"/>
+                    <Label Margin="10,0,10,0" Text="price" TextColor="Black" VerticalOptions="Center" Grid.Column="11"/>
+                    <Label Margin="10,0,10,0" Text="HWdetail" TextColor="Black" VerticalOptions="Center" Grid.Column="12"/>
+                    <Label Margin="10,0,10,0" Text="systemdate" TextColor="Black" VerticalOptions="Center" Grid.Column="13"/>
+                    <Label Margin="10,0,10,0" Text="status" TextColor="Black" VerticalOptions="Center" Grid.Column="14"/>
 
 
-                                        <Label Grid.Column="0" Grid.Row="13" Text="HW detail: " TextColor="Black" FontAttributes="Bold"></Label>
-                                        <Label Grid.Column="1" Grid.Row="13" Text="{Binding HWdetail}" TextColor="black" ></Label>
+                    <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="0" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                    <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                    <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                    <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="3" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                    <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="4" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                    <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="5" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                    <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="6" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                    <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="7" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                    <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="8" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                    <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="9" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                    <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="10" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                    <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="11" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                    <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="12" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                    <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="13" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                    <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="14" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
 
-                                        <Label Grid.Column="0" Grid.Row="14" Text="Status: " TextColor="Black" FontAttributes="Bold"></Label>
-                                        <Label Grid.Column="1" Grid.Row="14" Text="{Binding status}" TextColor="black" ></Label>
+                    </Grid>
+            </Frame>
+
+                <ListView x:Name="MyView" SelectionMode="None" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Padding="0" BorderColor="Gray">
+
+                                    <Grid Padding="0" RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="125"/>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="125"/>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="125"/>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="300"/>
+                                            <ColumnDefinition Width="125"/>
+                                            <ColumnDefinition Width="100"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Margin="10,0,10,0" Text="{Binding id}" TextColor="Black" VerticalOptions="Center" Grid.Column="0"/>
+                                        <Label Margin="10,0,10,0" Text="{Binding assettag}" TextColor="Black" VerticalOptions="Center" Grid.Column="1"/>
+                                        <Label Margin="10,0,10,0" Text="{Binding assettype}" TextColor="Black" VerticalOptions="Center" Grid.Column="2"/>
+                                        <Label Margin="10,0,10,0" Text="{Binding devicename}" TextColor="Black" VerticalOptions="Center" Grid.Column="3"/>
+                                        <Label Margin="10,0,10,0" Text="{Binding brand}" TextColor="Black" VerticalOptions="Center" Grid.Column="4"/>
+                                        <Label Margin="10,0,10,0" Text="{Binding model}" TextColor="Black" VerticalOptions="Center" Grid.Column="5"/>
+                                        <Label Margin="10,0,10,0" Text="{Binding sn}" TextColor="Black" VerticalOptions="Center" Grid.Column="6"/>
+                                        <Label Margin="10,0,10,0" Text="{Binding department}" TextColor="Black" VerticalOptions="Center" Grid.Column="7"/>
+                                        <Label Margin="10,0,10,0" Text="{Binding location}" TextColor="Black" VerticalOptions="Center" Grid.Column="8"/>
+                                        <Label Margin="10,0,10,0" Text="{Binding deviceuser}" TextColor="Black" VerticalOptions="Center" Grid.Column="9"/>
+                                        <Label Margin="10,0,10,0" Text="{Binding datepurchased}" TextColor="Black" VerticalOptions="Center" Grid.Column="10"/>
+                                        <Label Margin="10,0,10,0" Text="{Binding price}" TextColor="Black" VerticalOptions="Center" Grid.Column="11"/>
+                                        <Label Margin="10,0,10,0" Text="{Binding HWdetail}" TextColor="Black" VerticalOptions="Center" Grid.Column="12"/>
+                                        <Label Margin="10,0,10,0" Text="{Binding systemdate}" TextColor="Black" VerticalOptions="Center" Grid.Column="13"/>
+                                        <Label Margin="10,0,10,0" Text="{Binding status}" TextColor="Black" VerticalOptions="Center" Grid.Column="14"/>
+
+                                        <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="0" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                                        <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                                        <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                                        <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="3" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                                        <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="4" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                                        <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="5" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                                        <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="6" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                                        <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="7" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                                        <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="8" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                                        <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="9" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                                        <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="10" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                                        <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="11" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                                        <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="12" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                                        <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="13" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                                        <BoxView BackgroundColor="Gray" WidthRequest="1" Grid.Column="14" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
 
                                     </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-
-                    </ListView>
-
-                </Frame>
-
-
-            </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>     
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

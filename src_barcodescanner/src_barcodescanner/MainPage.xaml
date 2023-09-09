@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="src_barcodescanner.MainPage"
              Title="Dashboard"
-
              BackgroundColor="Gray">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" >

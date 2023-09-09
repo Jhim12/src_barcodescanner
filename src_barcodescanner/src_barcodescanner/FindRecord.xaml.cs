@@ -19,7 +19,6 @@ namespace src_barcodescanner
             public string assettag { get; set; }
             public string assettype { get; set; }
             public string devicename { get; set; }
-
             public string brand { get; set; }
             public string model { get; set; }
             public string sn { get; set; }
@@ -35,37 +34,19 @@ namespace src_barcodescanner
 
         SqlConnection sqlConnection;
         
-
-
         public FindRecord()
         {
             InitializeComponent();
-
-        }
-
-        private async void Find_ConnectServer_Clicked(object sender, EventArgs e)
-        {
+            // This line of codes is the creadentials and connection string
             string serverdbname = "src_db";
+            string servername = "192.168.100.106";
             string serverusername = "sa";
             string serverpassword = "masterfile";
-            string sqlconn = $"Data Source={Find_IPaddress.Text};Initial Catalog={serverdbname};User ID={serverusername};Password={serverpassword}";
+
+            string sqlconn = $"Data Source={servername};Initial Catalog={serverdbname};User ID={serverusername};Password={serverpassword}";
             sqlConnection = new SqlConnection(sqlconn);
-            //
+            //This line of codes is the creadentials and connection string
 
-            sqlConnection.Open();
-            await App.Current.MainPage.DisplayAlert("Alert", "Connection Establish", "Ok");
-            sqlConnection.Close();
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-
-                throw;
-
-            }
         }
 
         private async void Find_Scanner_Clicked(object sender, EventArgs e)
@@ -87,9 +68,8 @@ namespace src_barcodescanner
         {
             try
             {
-
-                List<MyTableList> myTableLists = new List<MyTableList>();
                 sqlConnection.Open();
+                List<MyTableList> myTableLists = new List<MyTableList>();
                 string queryString = $"Select * from dbo.tbldevice WHERE sn = '{Find_Search.Text}' OR assettag = '{Find_Search.Text}'";
                 SqlCommand command = new SqlCommand(queryString, sqlConnection);
                 SqlDataReader reader = command.ExecuteReader();

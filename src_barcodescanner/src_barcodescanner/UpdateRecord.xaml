@@ -6,14 +6,31 @@
         <ScrollView>
             <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" >
 
-                <Frame BackgroundColor="#49688e" CornerRadius="20" Margin="0,-5,0,0" HeightRequest="100" Grid.Row="0">
-                    <Grid ColumnDefinitions="*,Auto,Auto,Auto,Auto" VerticalOptions="CenterAndExpand">
-                        <Entry x:Name="Update_IPaddress" Grid.Column="0" Grid.Row="0" Placeholder="IP address" HorizontalTextAlignment="Center"/>
-                        <Button Text="Connect with server" Grid.Column="0" Grid.Row="1" BackgroundColor="White" x:Name="Update_ConnectServer" TextColor="Black" Clicked="Update_ConnectServer_Clicked"/>
-                    </Grid>
+                <Frame CornerRadius="20" Grid.Row="0" BackgroundColor="#49688e" HeightRequest="100" Margin="0,-5,0,0">
+                    <TableView>
+                        <TableRoot>
+                            <TableSection>
+
+                                <ViewCell>
+                                    <StackLayout Padding="0,5,0,0" Margin="0,0,0,0">
+                                        <Button x:Name="Update_Scanner" Clicked="Update_Scanner_Clicked" Text="Scan" TextColor="Black" BackgroundColor="white" />
+
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Padding="0,5,0,0" Margin="0,0,0,0">
+                                        <Button x:Name="Update_Search" Clicked="Update_Search_Clicked" Text="Search" TextColor="Black" BackgroundColor="white"/>
+                                    </StackLayout>
+                                </ViewCell>
+
+                            </TableSection>
+                        </TableRoot>
+                    </TableView>
                 </Frame>
 
-                <Frame CornerRadius="10" Grid.Row="1" BackgroundColor="#49688e" Margin="0,-5,0,0" HeightRequest="700">
+
+                <Frame CornerRadius="10" Grid.Row="1" BackgroundColor="#49688e" Margin="0,-5,0,0" HeightRequest="600">
                     <TableView>
                         <TableRoot>
                             <TableSection>
@@ -27,7 +44,7 @@
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label Text="Asset tag:" VerticalOptions="CenterAndExpand" FontAttributes="Bold" />
-                                        <Entry IsReadOnly="True"  Text="{Binding assettag, Mode=TwoWay}" x:Name="Update_Assettag" Placeholder="asset tag" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                        <Entry Text="{Binding assettag, Mode=TwoWay}" x:Name="Update_Assettag" Placeholder="Search or Scan asset tag" WidthRequest="250" VerticalOptions="CenterAndExpand"></Entry>
                                     </StackLayout>
                                 </ViewCell>
 
@@ -41,7 +58,7 @@
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label Text="Device Name:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                        <Entry  Text="{Binding devicename, Mode=TwoWay}" x:Name="Update_Devicename" Placeholder="device name" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                        <Entry IsReadOnly="True" Text="{Binding devicename, Mode=TwoWay}" x:Name="Update_Devicename" Placeholder="device name" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
                                     </StackLayout>
                                 </ViewCell>
 
@@ -62,15 +79,27 @@
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label Text="Serial Number:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                        <Entry  Text="{Binding sn, Mode=TwoWay}"  x:Name="Update_Sn" Placeholder="Scan serial number" IsReadOnly="True" WidthRequest="175" VerticalOptions="CenterAndExpand"></Entry>
-                                        <Button x:Name="Update_Scanner" Clicked="Update_Scanner_Clicked" Text="Scan" TextColor="Black" BackgroundColor="white" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
+                                        <Entry  Text="{Binding sn, Mode=TwoWay}"  x:Name="Update_Sn" Placeholder="Search or Scan serial number" WidthRequest="250" VerticalOptions="CenterAndExpand"></Entry>
                                     </StackLayout>
                                 </ViewCell>
 
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                        <Label  Text="Department:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                        <Entry  Text="{Binding department, Mode=TwoWay}"  x:Name="Update_Department" Placeholder="department" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
+                                        <Label Text="Department:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <Picker x:Name="Update_Department" Title="Select Department" SelectedItem="{Binding department, Mode=TwoWay}" WidthRequest="200" VerticalOptions="CenterAndExpand" >
+                                            <Picker.ItemsSource>
+                                                <x:Array Type="{x:Type x:String}">
+                                                    <x:String>Administration</x:String>
+                                                    <x:String>Junior HS</x:String>
+                                                    <x:String>Elementary</x:String>
+                                                    <x:String>College</x:String>
+                                                    <x:String>SRC Annex 1</x:String>
+                                                    <x:String>Senior HS</x:String>
+                                                    <x:String>Others</x:String>
+                                                    <x:String>High School</x:String>
+                                                </x:Array>
+                                            </Picker.ItemsSource>
+                                        </Picker>
                                     </StackLayout>
                                 </ViewCell>
 
@@ -104,28 +133,40 @@
 
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                        <Label Text="HWdetail:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                        <Entry IsReadOnly="True" Text="{Binding HWdetail, Mode=TwoWay}" x:Name="Update_HWdetail" Placeholder="HW detail" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
-                                    </StackLayout>
-                                </ViewCell>
-
-                                <ViewCell>
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label Text="Status:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
                                         <Entry  Text="{Binding status, Mode=TwoWay}" x:Name="Update_Status" Placeholder="status" WidthRequest="200" VerticalOptions="CenterAndExpand"></Entry>
                                     </StackLayout>
                                 </ViewCell>
 
-                                <ViewCell>
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                        <Button x:Name="Update_Record" Clicked="Update_Record_Clicked" TextColor="Black" Text="Update Record" BackgroundColor="white" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
-                                    </StackLayout>
-                                </ViewCell>
 
 
                             </TableSection>
                         </TableRoot>
                     </TableView>
+                </Frame>
+
+                <Frame CornerRadius="20" Grid.Row="2" BackgroundColor="#49688e" HeightRequest="250" Margin="0,-5,0,0">
+                    <StackLayout>
+                        <ScrollView>
+                            <Grid RowDefinitions="Auto,Auto,Auto">
+
+                                <Label Grid.Column="0" Grid.Row="1"  Text="Specification" FontAttributes="Bold" FontSize="Title" TextColor="White"></Label>
+
+                                <Editor IsReadOnly="True" x:Name="Update_HWdetail" Text="{Binding HWdetail, Mode=TwoWay}" Placeholder="Details here" AutoSize="TextChanges" WidthRequest="200" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.Row="2" TextColor="White"></Editor>
+
+                            </Grid>
+                        </ScrollView>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Grid.Row="3" CornerRadius="20" BackgroundColor="#49688e" HeightRequest="50" Margin="0,-5,0,0">
+                    <StackLayout>
+                        <Grid RowDefinitions="Auto,Auto,Auto">
+
+                            <Button x:Name="Update_Record" Clicked="Update_Record_Clicked" TextColor="Black" Text="Update Record" BackgroundColor="white" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
+
+                        </Grid>
+                    </StackLayout>
                 </Frame>
 
             </Grid>

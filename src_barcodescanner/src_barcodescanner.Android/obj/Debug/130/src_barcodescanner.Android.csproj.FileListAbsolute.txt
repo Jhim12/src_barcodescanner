@@ -655,6 +655,7 @@ C:\Users\Jhimoel S. Dacera\source\repos\src_barcodescanner\src_barcodescanner\sr
 C:\Users\Jhimoel S. Dacera\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\android\assets\I18N.pdb
 C:\Users\Jhimoel S. Dacera\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\android\assets\I18N.West.dll
 C:\Users\Jhimoel S. Dacera\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\android\assets\I18N.West.pdb
+C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\android\assets\Mono.Android.dll
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\bin\Debug\src_barcodescanner.Android.dll
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\bin\Debug\src_barcodescanner.Android.pdb
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\bin\Debug\com.companyname.src_barcodescanner.apk
@@ -720,6 +721,8 @@ C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescann
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\res\mipmap-xxhdpi\launcher_foreground.png
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\res\mipmap-xxxhdpi\icon.png
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\res\mipmap-xxxhdpi\launcher_foreground.png
+C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\res\drawable\src_logo.png
+C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\res\drawable\src_logo_trans.png
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\uploadflags.txt
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\resolvedassemblies.hash
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\android\assets\FastAndroidCamera.dll
@@ -731,7 +734,6 @@ C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescann
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\android\assets\I18N.West.pdb
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\android\assets\Java.Interop.dll
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\android\assets\Java.Interop.pdb
-C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\android\assets\Mono.Android.dll
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\android\assets\Mono.Android.pdb
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\android\assets\Mono.Security.dll
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\android\assets\Mono.Security.pdb
@@ -1312,5 +1314,3 @@ C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescann
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\stamp\_GenerateJavaStubs.stamp
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\stamp\_ResolveLibraryProjectImports.stamp
-C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\res\drawable\src_logo.png
-C:\Users\New\source\repos\src_barcodescanner\src_barcodescanner\src_barcodescanner.Android\obj\Debug\130\res\drawable\src_logo_trans.png

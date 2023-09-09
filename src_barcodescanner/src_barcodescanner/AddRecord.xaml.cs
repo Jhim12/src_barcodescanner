@@ -45,7 +45,7 @@ namespace src_barcodescanner
 
             // This line of codes is the creadentials and connection string
             string serverdbname = "src_db";
-            string servername = "10.0.0.144";
+            string servername = "192.168.100.106";
             string serverusername = "sa";
             string serverpassword = "masterfile";
 
@@ -155,6 +155,7 @@ namespace src_barcodescanner
             //END
         }
 
+
         // Need this method to type number only in the entry price
         private void Entry_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -205,11 +206,7 @@ namespace src_barcodescanner
             string sn = Add_Sn.Text;
             string selectedDepartment = Add_Department.SelectedItem as string;
 
-
-
             DateTime selectedDate = Add_Datepurchased.Date;
-
-
 
             // Check if the device name is empty
             if (string.IsNullOrWhiteSpace(assettag))
@@ -254,11 +251,6 @@ namespace src_barcodescanner
                 return;
             }
             // Check if the device name is empty
-
-
-
-
-
 
             try
             {

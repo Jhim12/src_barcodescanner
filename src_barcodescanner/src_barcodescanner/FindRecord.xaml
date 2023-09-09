@@ -4,38 +4,16 @@
              x:Class="src_barcodescanner.FindRecord">
     <ContentPage.Content>
         <ScrollView>
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" >
+            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" >
 
-                <Frame BackgroundColor="#49688e" CornerRadius="20" Margin="0,-5,0,0" HeightRequest="100" Grid.Row="0">
-                    <TableView>
-                        <TableRoot>
-                            <TableSection>
-                                <ViewCell>
-                                    <StackLayout>
-                                        <Entry x:Name="Find_IPaddress" Placeholder="Enter IP Address" HorizontalTextAlignment="Center"/>
-                                    </StackLayout>
-                                </ViewCell>
-
-                                <ViewCell>
-                                    <StackLayout>
-                                        <Button Text="Connect with server" BackgroundColor="White" x:Name="Find_ConnectServer" TextColor="Black" Clicked="Find_ConnectServer_Clicked"/>
-                                    </StackLayout>
-                                </ViewCell>
-
-                            </TableSection>
-                        </TableRoot>
-                    </TableView>
-                </Frame>
-
-                <Frame CornerRadius="20" Grid.Row="1" BackgroundColor="#49688e" HeightRequest="100" Margin="0,-5,0,0">
+                <Frame CornerRadius="20" Grid.Row="0" BackgroundColor="#49688e" HeightRequest="100" Margin="0,-5,0,0">
                     <TableView>
                         <TableRoot>
                             <TableSection>
 
                                 <ViewCell>
                                     <StackLayout  Orientation="Horizontal" Padding="0,0,0,0">
-                                        <Label Text="Icon" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                        <Entry   x:Name="Find_Search" Placeholder="Search record" WidthRequest="225"></Entry>
+                                        <Entry   x:Name="Find_Search" Placeholder="Search record" WidthRequest="250"></Entry>
                                         <Button Clicked="Find_Scanner_Clicked" x:Name="Find_Scanner" Text="Scan" TextColor="Black" BackgroundColor="White"/>
                                     </StackLayout>
                                 </ViewCell>
@@ -51,7 +29,7 @@
                     </TableView>
                 </Frame>
 
-                <Frame CornerRadius="20" Grid.Row="2" BackgroundColor="#49688e" HeightRequest="350" Margin="0,-5,0,0">
+                <Frame CornerRadius="20" Grid.Row="1" BackgroundColor="#49688e" HeightRequest="500" Margin="0,-5,0,0">
 
                     <ListView x:Name="MyFind" HasUnevenRows="True" Footer="">
                         <ListView.ItemTemplate>
@@ -104,7 +82,7 @@
                     </ListView>
             </Frame>
 
-                <Frame CornerRadius="20" Grid.Row="3" BackgroundColor="#49688e" HeightRequest="250" Margin="0,-5,0,0">
+                <Frame CornerRadius="20" Grid.Row="2" BackgroundColor="#49688e" HeightRequest="250" Margin="0,-5,0,0">
 
                     <ListView x:Name="Find_HWDetail" HasUnevenRows="True" Footer="">
                         <ListView.ItemTemplate>

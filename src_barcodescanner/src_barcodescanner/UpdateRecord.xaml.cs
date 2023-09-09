@@ -48,32 +48,15 @@ namespace src_barcodescanner
         public UpdateRecord ()
 		{
 			InitializeComponent ();
-		}
-
-        private async void Update_ConnectServer_Clicked(object sender, EventArgs e)
-        {
+            // This line of codes is the creadentials and connection string
             string serverdbname = "src_db";
+            string servername = "192.168.100.106";
             string serverusername = "sa";
             string serverpassword = "masterfile";
-            string sqlconn = $"Data Source={Update_IPaddress.Text};Initial Catalog={serverdbname};User ID={serverusername};Password={serverpassword}";
+
+            string sqlconn = $"Data Source={servername};Initial Catalog={serverdbname};User ID={serverusername};Password={serverpassword}";
             sqlConnection = new SqlConnection(sqlconn);
-            //
-
-            sqlConnection.Open();
-            await App.Current.MainPage.DisplayAlert("Alert", "Connection Establish", "Ok");
-            sqlConnection.Close();
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-
-                throw;
-
-            }
-
+            //This line of codes is the creadentials and connection string
         }
 
         private async void Update_Scanner_Clicked(object sender, EventArgs e)
@@ -128,8 +111,52 @@ namespace src_barcodescanner
             };
         }
 
+        private async void Update_Search_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                sqlConnection.Open();
+                string queryString = $"Select * from dbo.tbldevice WHERE sn = '{Update_Sn.Text}' OR assettag= '{Update_Assettag.Text}'";
+                SqlCommand command = new SqlCommand(queryString, sqlConnection);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    myTableList = new MyTableList
+                    {
+
+                        assettag = reader["assettag"].ToString(),
+                        assettype = reader["assettype"].ToString(),
+                        devicename = reader["devicename"].ToString(),
+                        brand = reader["brand"].ToString(),
+                        model = reader["model"].ToString(),
+                        sn = reader["sn"].ToString(),
+                        department = reader["department"].ToString(),
+                        location = reader["location"].ToString(),
+                        deviceuser = reader["deviceuser"].ToString(),
+                        datepurchased = DateTime.Parse(reader["datepurchased"].ToString()),
+                        price = float.Parse(reader["price"].ToString()),
+                        HWdetail = reader["HWdetail"].ToString(),
+                        status = reader["status"].ToString(),
+                    };
+                    // Set the BindingContext to the created object
+                    this.BindingContext = myTableList;
+                }
+
+                reader.Close();
+                sqlConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "Ok");
+                throw;
+            }
+        }
+
         private async void Update_Record_Clicked(object sender, EventArgs e)
         {
+
+            string selectedDepartment = Update_Department.SelectedItem as string;
+
             try
             {
 
@@ -141,7 +168,7 @@ namespace src_barcodescanner
                 string brandTobeUpdated = Update_Brand.Text;
                 string modelTobeUpdated = Update_Model.Text;
                 string snTobeUpdated = Update_Sn.Text;
-                string departmentTobeUpdated = Update_Department.Text;
+                string departmentTobeUpdated = selectedDepartment;
                 string locationTobeUpdated = Update_Location.Text;
                 string deviceuserTobeUpdated = Update_Deviceuser.Text;
                 DateTime datepurchasedTobeUpdated = Update_Datepurchased.Date;
@@ -169,13 +196,13 @@ namespace src_barcodescanner
                 }
                 sqlConnection.Close();  // Close the connection in the finally block
                 await App.Current.MainPage.DisplayAlert("Alert", "Congrats you have Successfully Updated the row item", "Ok");
+                await Navigation.PushAsync(new MainPage());
             }
             catch (Exception ex)
             {
                 await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "Ok");
             }
         }
-
 
 
     }

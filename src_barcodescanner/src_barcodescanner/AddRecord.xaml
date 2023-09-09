@@ -10,7 +10,7 @@
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" >
 
 
-                <Frame CornerRadius="10" Grid.Row="0" BackgroundColor="#49688e" Margin="0,-5,0,0" HeightRequest="450">
+                <Frame CornerRadius="10" Grid.Row="0" BackgroundColor="#49688e" Margin="0,-5,0,0" HeightRequest="475">
                     <TableView>
                         <TableRoot>
                             <TableSection>

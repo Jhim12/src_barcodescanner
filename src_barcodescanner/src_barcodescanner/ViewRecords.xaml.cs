@@ -15,10 +15,10 @@ namespace src_barcodescanner
     {
         public class MyTableList
         {
+            public int id { get; set; }
             public string assettag { get; set; }
             public string assettype { get; set; }
             public string devicename { get; set; }
-
             public string brand { get; set; }
             public string model { get; set; }
             public string sn { get; set; }
@@ -28,6 +28,7 @@ namespace src_barcodescanner
             public DateTime datepurchased { get; set; }
             public float price { get; set; }
             public string HWdetail { get; set; }
+            public DateTime systemdate { get; set; }
             public string status { get; set; }
         }
 
@@ -36,35 +37,15 @@ namespace src_barcodescanner
         public ViewRecords()
         {
             InitializeComponent();
-        }
-
-        private async void View_ConnectServer_Clicked(object sender, EventArgs e)
-        {
+            // This line of codes is the creadentials and connection string
             string serverdbname = "src_db";
+            string servername = "192.168.100.106";
             string serverusername = "sa";
             string serverpassword = "masterfile";
-            string sqlconn = $"Data Source={View_IPaddress.Text};Initial Catalog={serverdbname};User ID={serverusername};Password={serverpassword}";
+
+            string sqlconn = $"Data Source={servername};Initial Catalog={serverdbname};User ID={serverusername};Password={serverpassword}";
             sqlConnection = new SqlConnection(sqlconn);
-            //
-
-            sqlConnection.Open();
-            await App.Current.MainPage.DisplayAlert("Alert", "Connection Establish", "Ok");
-            sqlConnection.Close();
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-
-                throw;
-
-            }
-        }
-
-        private async void View_Record_Clicked(object sender, EventArgs e)
-        {
+            //This line of codes is the creadentials and connection string
 
             try
             {
@@ -75,24 +56,38 @@ namespace src_barcodescanner
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    myTableLists.Add(new MyTableList
+                    DateTime datePurchased;
+                    DateTime systemDate;
 
+                    if (DateTime.TryParse(reader["datepurchased"].ToString(), out datePurchased) &&
+                        DateTime.TryParse(reader["systemdate"].ToString(), out systemDate))
                     {
-                        assettag = reader["assettag"].ToString(),
-                        assettype = reader["assettype"].ToString(),
-                        devicename = reader["devicename"].ToString(),
-                        brand = reader["brand"].ToString(),
-                        model = reader["model"].ToString(),
-                        sn = reader["sn"].ToString(),
-                        department = reader["department"].ToString(),
-                        location = reader["location"].ToString(),
-                        deviceuser = reader["deviceuser"].ToString(),
-                        HWdetail = reader["HWdetail"].ToString(),
-                        status = reader["status"].ToString(),
-
+                        myTableLists.Add(new MyTableList
+                        {
+                            id = Convert.ToInt32(reader["id"]),
+                            assettag = reader["assettag"].ToString(),
+                            assettype = reader["assettype"].ToString(),
+                            devicename = reader["devicename"].ToString(),
+                            brand = reader["brand"].ToString(),
+                            model = reader["model"].ToString(),
+                            sn = reader["sn"].ToString(),
+                            department = reader["department"].ToString(),
+                            location = reader["location"].ToString(),
+                            deviceuser = reader["deviceuser"].ToString(),
+                            datepurchased = datePurchased,
+                            price = float.Parse(reader["price"].ToString()),
+                            HWdetail = reader["HWdetail"].ToString(),
+                            systemdate = systemDate,
+                            status = reader["status"].ToString(),
+                        });
                     }
-                    );
+
+                    else
+                    {
+                        // Handle invalid date format here or log an error message.
+                    }
                 }
+
                 reader.Close();
                 sqlConnection.Close();
 
@@ -100,11 +95,13 @@ namespace src_barcodescanner
             }
             catch (Exception ex)
             {
-                await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "Ok");
+    
                 throw;
             }
 
+
         }
+
 
     }
 }
