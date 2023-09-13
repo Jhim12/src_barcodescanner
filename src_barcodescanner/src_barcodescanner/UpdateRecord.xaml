@@ -6,23 +6,26 @@
         <ScrollView>
             <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" >
 
-                <Frame CornerRadius="20" Grid.Row="0" BackgroundColor="#49688e" HeightRequest="100" Margin="0,-5,0,0">
+                <Frame  Grid.Row="0" BackgroundColor="#49688e" HeightRequest="100" >
                     <TableView>
                         <TableRoot>
                             <TableSection>
 
+
+                                <ViewCell>
+                                    <StackLayout  Orientation="Horizontal" Padding="0,0,0,0" Margin="0,0,0,0">
+                                        <Entry   x:Name="Update_Search" Placeholder="Search record" WidthRequest="250"></Entry>
+                                        <Button x:Name="Update_Search_button" Clicked="Update_Search_Clicked" Text="Search" TextColor="Black" BackgroundColor="white"/>
+                                    </StackLayout>
+                                </ViewCell>
+
                                 <ViewCell>
                                     <StackLayout Padding="0,5,0,0" Margin="0,0,0,0">
                                         <Button x:Name="Update_Scanner" Clicked="Update_Scanner_Clicked" Text="Scan" TextColor="Black" BackgroundColor="white" />
-
                                     </StackLayout>
                                 </ViewCell>
 
-                                <ViewCell>
-                                    <StackLayout Padding="0,5,0,0" Margin="0,0,0,0">
-                                        <Button x:Name="Update_Search" Clicked="Update_Search_Clicked" Text="Search" TextColor="Black" BackgroundColor="white"/>
-                                    </StackLayout>
-                                </ViewCell>
+
 
                             </TableSection>
                         </TableRoot>
@@ -30,7 +33,7 @@
                 </Frame>
 
 
-                <Frame CornerRadius="10" Grid.Row="1" BackgroundColor="#49688e" Margin="0,-5,0,0" HeightRequest="600">
+                <Frame Grid.Row="1" BackgroundColor="#49688e"  HeightRequest="600">
                     <TableView>
                         <TableRoot>
                             <TableSection>
@@ -44,7 +47,7 @@
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label Text="Asset tag:" VerticalOptions="CenterAndExpand" FontAttributes="Bold" />
-                                        <Entry Text="{Binding assettag, Mode=TwoWay}" x:Name="Update_Assettag" Placeholder="Search or Scan asset tag" WidthRequest="250" VerticalOptions="CenterAndExpand"></Entry>
+                                        <Entry IsReadOnly="True" Text="{Binding assettag, Mode=TwoWay}" x:Name="Update_Assettag" Placeholder="Search or Scan asset tag" WidthRequest="250" VerticalOptions="CenterAndExpand"></Entry>
                                     </StackLayout>
                                 </ViewCell>
 
@@ -79,7 +82,7 @@
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label Text="Serial Number:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                                        <Entry  Text="{Binding sn, Mode=TwoWay}"  x:Name="Update_Sn" Placeholder="Search or Scan serial number" WidthRequest="250" VerticalOptions="CenterAndExpand"></Entry>
+                                        <Entry IsReadOnly="True" Text="{Binding sn, Mode=TwoWay}"  x:Name="Update_Sn" Placeholder="Search or Scan serial number" WidthRequest="250" VerticalOptions="CenterAndExpand"></Entry>
                                     </StackLayout>
                                 </ViewCell>
 
@@ -145,7 +148,7 @@
                     </TableView>
                 </Frame>
 
-                <Frame CornerRadius="20" Grid.Row="2" BackgroundColor="#49688e" HeightRequest="250" Margin="0,-5,0,0">
+                <Frame  Grid.Row="2" BackgroundColor="#49688e" HeightRequest="250" >
                     <StackLayout>
                         <ScrollView>
                             <Grid RowDefinitions="Auto,Auto,Auto">
@@ -159,7 +162,7 @@
                     </StackLayout>
                 </Frame>
 
-                <Frame Grid.Row="3" CornerRadius="20" BackgroundColor="#49688e" HeightRequest="50" Margin="0,-5,0,0">
+                <Frame Grid.Row="3"  BackgroundColor="#49688e" HeightRequest="50" >
                     <StackLayout>
                         <Grid RowDefinitions="Auto,Auto,Auto">
 

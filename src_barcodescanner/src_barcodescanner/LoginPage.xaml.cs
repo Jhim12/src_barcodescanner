@@ -22,9 +22,8 @@ namespace src_barcodescanner
         private async void Login_Clicked(object sender, EventArgs e)
         {
             // Sql connection credentials
-
-            string serverdbname = "src_db";
-            string servername = "10.0.0.144";
+            string serverdbname = "src_db_testing";
+            string servername = "10.0.0.3";
             string serverusername = "sa";
             string serverpassword = "masterfile";
 
@@ -35,7 +34,7 @@ namespace src_barcodescanner
 
             if (!string.IsNullOrEmpty(Login_UserName.Text) && !string.IsNullOrEmpty(Login_Password.Text))
             {
-                string queryString = "SELECT * FROM dbo.tblaccountcaps WHERE Username = @Username AND Password = @Password";
+                string queryString = "SELECT * FROM dbo.employee WHERE username = @username AND password = @password AND (accounttype = @administrator OR accounttype = @it)";                
 
                 using (SqlConnection sqlConnection = new SqlConnection(sqlconn))
                 {
@@ -43,9 +42,10 @@ namespace src_barcodescanner
 
                     using (SqlCommand command = new SqlCommand(queryString, sqlConnection))
                     {
-                        command.Parameters.AddWithValue("@Username", Login_UserName.Text);
-                        command.Parameters.AddWithValue("@Password", Login_Password.Text);
-
+                        command.Parameters.AddWithValue("@username", Login_UserName.Text);
+                        command.Parameters.AddWithValue("@password", Login_Password.Text);
+                        command.Parameters.AddWithValue("@administrator", "Administrator");
+                        command.Parameters.AddWithValue("@it", "IT"); // Adjust this value as needed
                         SqlDataReader reader = command.ExecuteReader();
 
                         if (reader.HasRows)

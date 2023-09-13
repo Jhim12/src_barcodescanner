@@ -28,11 +28,11 @@ namespace src_barcodescanner
             public DateTime datepurchased { get; set; }
             public float price { get; set; }
             public string HWdetail { get; set; }
+
+            public DateTime systemdate { get; set; }
         }
 
         SqlConnection sqlConnection;
-
-
 
         public AddRecord ()
 		{
@@ -44,8 +44,8 @@ namespace src_barcodescanner
 
 
             // This line of codes is the creadentials and connection string
-            string serverdbname = "src_db";
-            string servername = "192.168.100.106";
+            string serverdbname = "src_db_testing";
+            string servername = "10.0.0.3";
             string serverusername = "sa";
             string serverpassword = "masterfile";
 
@@ -175,8 +175,6 @@ namespace src_barcodescanner
         // This line codes is for Scanner and get the Serial Number of the Asset tag in the barcode
         private async void Add_Scanner_Clicked(object sender, EventArgs e)
         {
-
-
             var scan = new ZXingScannerPage();
             await Navigation.PushAsync(scan);
             scan.OnScanResult += (result) =>
@@ -217,7 +215,7 @@ namespace src_barcodescanner
 
             if (string.IsNullOrWhiteSpace(selectedAssetType))
             {
-                DisplayAlert("Validation Error", "Asset Tag is required.", "OK");
+                DisplayAlert("Validation Error", "Asset Type is required.", "OK");
                 return;
             }
 
@@ -250,31 +248,66 @@ namespace src_barcodescanner
                 DisplayAlert("Validation Error", "Model is required.", "OK");
                 return;
             }
+
             // Check if the device name is empty
+
+            // Display a confirmation prompt
+            bool result = await DisplayAlert("Confirmation", "Do you want to add the record?", "Yes", "No");
+
+            if (!result)
+            {
+                // User chose "No," so cancel the operation
+                return;
+            }
 
             try
             {
                 sqlConnection.Open();
-                using (SqlCommand command = new SqlCommand("INSERT INTO dbo.tbldevice (assettag, assettype, devicename, brand, model, sn, department, datepurchased, price, HWdetail)" +
-                    " VALUES (@assettag, @assettype, @devicename, @brand, @model, @sn, @department, @datepurchased, @price, @HWdetail)", sqlConnection))
+                using (SqlCommand command = new SqlCommand("INSERT INTO dbo.tbldevice (assettag, assettype, devicename, brand, model, sn, department, datepurchased, price, HWdetail, systemdate)" +
+                    " VALUES (@assettag, @assettype, @devicename, @brand, @model, @sn, @department, @datepurchased, @price, @HWdetail, @systemdate)", sqlConnection))
                 {
-                    command.Parameters.AddWithValue("@assettag", Add_Assettag.Text);
+                    // Set the parameters
+                    command.Parameters.AddWithValue("@assettag", string.IsNullOrEmpty(Add_Assettag.Text) ? DBNull.Value : (object)Add_Assettag.Text);
                     command.Parameters.AddWithValue("@assettype", selectedAssetType);
-                    command.Parameters.AddWithValue("@devicename", Add_Devicename.Text);
-                    command.Parameters.AddWithValue("@brand", Add_Brand.Text);
-                    command.Parameters.AddWithValue("@model", Add_Model.Text);
-                    command.Parameters.AddWithValue("@sn", Add_Sn.Text);
-                    command.Parameters.AddWithValue("@department", selectedDepartment);
+                    command.Parameters.AddWithValue("@devicename", string.IsNullOrEmpty(Add_Devicename.Text) ? DBNull.Value : (object)Add_Devicename.Text);
+                    command.Parameters.AddWithValue("@brand", string.IsNullOrEmpty(Add_Brand.Text) ? DBNull.Value : (object)Add_Brand.Text);
+                    command.Parameters.AddWithValue("@model", string.IsNullOrEmpty(Add_Model.Text) ? DBNull.Value : (object)Add_Model.Text);
+                    command.Parameters.AddWithValue("@sn", string.IsNullOrEmpty(Add_Sn.Text) ? DBNull.Value : (object)Add_Sn.Text);
+                    if (!string.IsNullOrEmpty(selectedDepartment))
+                    {
+                        command.Parameters.AddWithValue("@department", selectedDepartment);
+                    }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@department", DBNull.Value);
+                    }
 
                     // Convert and set the DateTime value with SqlDbType.Date
                     SqlParameter datePurchasedParameter = new SqlParameter("@datepurchased", System.Data.SqlDbType.Date);
                     datePurchasedParameter.Value = selectedDate;
-                    command.Parameters.Add(datePurchasedParameter); // Add the parameter to the command's Parameters collection
+                    command.Parameters.Add(datePurchasedParameter);
 
-                    command.Parameters.AddWithValue("@price", Add_Price.Text);
-                    command.Parameters.AddWithValue("@HWdetail", Add_HWdetail.Text);
+                    // Handle the case where Add_Price.Text is empty by setting it to 0 in the database
+                    float priceValue;
+                    if (float.TryParse(Add_Price.Text, out priceValue))
+                    {
+                        command.Parameters.AddWithValue("@price", priceValue);
+                    }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@price", 0);
+                    }
+
+                    // Handle the case where Add_HWdetail.Text is empty by setting it to NULL in the database
+                    command.Parameters.AddWithValue("@HWdetail", string.IsNullOrEmpty(Add_HWdetail.Text) ? DBNull.Value : (object)Add_HWdetail.Text);
+
+                    // Convert and set the DateTime value with SqlDbType.Date
+                    SqlParameter systemdateParameter = new SqlParameter("@systemdate", System.Data.SqlDbType.Date);
+                    systemdateParameter.Value = selectedDate;
+                    command.Parameters.Add(systemdateParameter);
+
+                    // Execute the SQL command
                     command.ExecuteNonQuery();
-
                 }
                 sqlConnection.Close();
                 await App.Current.MainPage.DisplayAlert("Alert", "Congrats you just posted data", "Ok");
@@ -291,8 +324,6 @@ namespace src_barcodescanner
                 Add_Price.Text = string.Empty;
                 Add_HWdetail.Text = string.Empty;
                 // Clear fields
-
-
                 await Navigation.PushAsync(new MainPage());
             }
             catch (Exception ex)
@@ -302,8 +333,6 @@ namespace src_barcodescanner
             }
         }
         // This line codes is for Add record
-
-
         // END
     }
 }

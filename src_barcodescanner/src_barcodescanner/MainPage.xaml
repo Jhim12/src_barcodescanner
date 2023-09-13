@@ -45,9 +45,9 @@
                     <Button  Text="View Records" BackgroundColor="#294a70" x:Name="ViewRecords" Clicked="ViewRecords_Clicked" TextColor="White"/>
                 </Frame>
 
-                <Frame HeightRequest="75" WidthRequest="200" Grid.Row="2" Grid.Column="1" BackgroundColor="#49688e" HasShadow="True" CornerRadius="5"  HorizontalOptions="CenterAndExpand">
+                <!--<Frame HeightRequest="75" WidthRequest="200" Grid.Row="2" Grid.Column="1" BackgroundColor="#49688e" HasShadow="True" CornerRadius="5"  HorizontalOptions="CenterAndExpand">
                     <Button  Text="Log in Page" BackgroundColor="#294a70" x:Name="LoginPage" Clicked="LoginPage_Clicked" TextColor="White"/>
-                </Frame>
+                </Frame>-->
 
             </Grid>
 

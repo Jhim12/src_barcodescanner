@@ -36,9 +36,9 @@ namespace src_barcodescanner
             await Navigation.PushAsync(new ViewRecords());
         }
 
-        private async void LoginPage_Clicked(object sender, EventArgs e)
+/*        private async void LoginPage_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new LoginPage());
-        }
+        }*/
     }
 }

@@ -38,8 +38,9 @@ namespace src_barcodescanner
         {
             InitializeComponent();
             // This line of codes is the creadentials and connection string
-            string serverdbname = "src_db";
-            string servername = "192.168.100.106";
+
+            string serverdbname = "src_db_testing";
+            string servername = "10.0.0.3";
             string serverusername = "sa";
             string serverpassword = "masterfile";
 
@@ -75,37 +76,40 @@ namespace src_barcodescanner
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
+
                     myTableLists.Add(new MyTableList
 
                     {
-
-                        assettag = reader["assettag"].ToString(),
-                        assettype = reader["assettype"].ToString(),
-                        devicename = reader["devicename"].ToString(),
-                        brand = reader["brand"].ToString(),
-                        model = reader["model"].ToString(),
-                        sn = reader["sn"].ToString(),
-                        department = reader["department"].ToString(),
-                        location = reader["location"].ToString(),
-                        deviceuser = reader["deviceuser"].ToString(),
-                        datepurchased = DateTime.Parse(reader["datepurchased"].ToString()),
-                        price = float.Parse(reader["price"].ToString()),
-                        HWdetail = reader["HWdetail"].ToString(),
-                        status = reader["status"].ToString(),
+                        assettag = reader["assettag"] is DBNull ? string.Empty : reader["assettag"].ToString(),
+                        assettype = reader["assettype"] is DBNull ? string.Empty : reader["assettype"].ToString(),
+                        devicename = reader["devicename"] is DBNull ? string.Empty : reader["devicename"].ToString(),
+                        brand = reader["brand"] is DBNull ? string.Empty : reader["brand"].ToString(),
+                        model = reader["model"] is DBNull ? string.Empty : reader["model"].ToString(),
+                        sn = reader["sn"] is DBNull ? string.Empty : reader["sn"].ToString(),
+                        department = reader["department"] is DBNull ? string.Empty : reader["department"].ToString(),
+                        location = reader["location"] is DBNull ? string.Empty : reader["location"].ToString(),
+                        deviceuser = reader["deviceuser"] is DBNull ? string.Empty : reader["deviceuser"].ToString(),
+                        datepurchased = reader["datepurchased"] is DBNull ? DateTime.MinValue : DateTime.Parse(reader["datepurchased"].ToString()),
+                        price = reader["price"] is DBNull ? 0.0f : float.Parse(reader["price"].ToString()),
+                        HWdetail = reader["HWdetail"] is DBNull ? string.Empty : reader["HWdetail"].ToString(),
+                        status = reader["status"] is DBNull ? string.Empty : reader["status"].ToString(),
 
                     }
                     );
-
-
-
-
                 }
                 reader.Close();
                 sqlConnection.Close();
 
-                MyFind.ItemsSource = myTableLists;
-                Find_HWDetail.ItemsSource = myTableLists;
-                
+                if (myTableLists.Count > 0)
+                {
+                    MyFind.ItemsSource = myTableLists;
+                    Find_HWDetail.ItemsSource = myTableLists;
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Alert", "No record found", "Ok");
+                }
+
             }
             catch (Exception ex)
             {
@@ -113,9 +117,6 @@ namespace src_barcodescanner
                 throw;
             }
         }
-
-
-
 
     }
 }

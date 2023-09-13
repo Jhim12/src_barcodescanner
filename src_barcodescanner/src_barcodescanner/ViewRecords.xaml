@@ -3,24 +3,58 @@
              x:Class="src_barcodescanner.ViewRecords"
              BackgroundColor="Gray">
     <ContentPage.Content>
+        
+        
         <ScrollView HorizontalScrollBarVisibility="Default" Orientation="Horizontal">
             <StackLayout Padding="0" Spacing="0">
 
-            <Label Margin="0, 0, 0, 20" FontSize="Title" Text="View Records" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+                <Label Margin="0, 0, 0, 20" FontSize="Title" Text="View Records" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"></Label>
 
-            
-            <Frame BackgroundColor="White" BorderColor="Gray" Padding="0">
+
+                <Frame Padding="0,0,1500,0" BackgroundColor="Gray" HeightRequest="250">
+                    <TableView>
+                        <TableRoot>
+                            <TableSection>
+
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Select a start date:" VerticalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="White"/>
+                                        <DatePicker x:Name="StartDateView"   Format="dd/MM/yyyy" WidthRequest="250" TextColor="White"></DatePicker>
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Select a end date:  " VerticalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="White"/>
+                                        <DatePicker x:Name="EndDateView" Format="dd/MM/yyyy" WidthRequest="250" TextColor="White"></DatePicker>
+                                    </StackLayout>
+                                </ViewCell>
+
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Button Clicked="ViewSelectedDateRecords_Clicked" x:Name="ViewSelectedDateRecords" HorizontalOptions="EndAndExpand" Text="View Records" Padding="25,0,25,0"></Button>
+                                    </StackLayout>
+                                </ViewCell>
+
+                            </TableSection>
+                        </TableRoot>
+                    </TableView>
+                </Frame>
+
+
+                <Frame BackgroundColor="White" BorderColor="Gray" Padding="0">
                 <Grid Padding="0">
                     <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="125"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
                             <ColumnDefinition Width="125"/>
                             <ColumnDefinition Width="100"/>
                             <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="125"/>
-                            <ColumnDefinition Width="50"/>
-                            <ColumnDefinition Width="50"/>
                             <ColumnDefinition Width="100"/>
                             <ColumnDefinition Width="125"/>
                             <ColumnDefinition Width="50"/>
@@ -65,7 +99,7 @@
                     </Grid>
             </Frame>
 
-                <ListView x:Name="MyView" SelectionMode="None" HasUnevenRows="True">
+                <ListView x:Name="MyViewRecords" SelectionMode="None" HasUnevenRows="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -73,15 +107,15 @@
 
                                     <Grid Padding="0" RowSpacing="0">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="125"/>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="100"/>
                                             <ColumnDefinition Width="125"/>
                                             <ColumnDefinition Width="100"/>
                                             <ColumnDefinition Width="100"/>
-                                            <ColumnDefinition Width="100"/>
-                                            <ColumnDefinition Width="100"/>
-                                            <ColumnDefinition Width="125"/>
-                                            <ColumnDefinition Width="50"/>
-                                            <ColumnDefinition Width="50"/>
                                             <ColumnDefinition Width="100"/>
                                             <ColumnDefinition Width="125"/>
                                             <ColumnDefinition Width="50"/>

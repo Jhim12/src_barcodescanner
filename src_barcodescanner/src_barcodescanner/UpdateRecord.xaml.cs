@@ -44,13 +44,12 @@ namespace src_barcodescanner
         }
 
         SqlConnection sqlConnection;
-
         public UpdateRecord ()
 		{
 			InitializeComponent ();
             // This line of codes is the creadentials and connection string
-            string serverdbname = "src_db";
-            string servername = "192.168.100.106";
+            string serverdbname = "src_db_testing";
+            string servername = "10.0.0.3";
             string serverusername = "sa";
             string serverpassword = "masterfile";
 
@@ -81,19 +80,20 @@ namespace src_barcodescanner
                             myTableList = new MyTableList
                             {
 
-                                assettag = reader["assettag"].ToString(),
-                                assettype = reader["assettype"].ToString(),
-                                devicename = reader["devicename"].ToString(),
-                                brand = reader["brand"].ToString(),
-                                model = reader["model"].ToString(),
-                                sn = reader["sn"].ToString(),
-                                department = reader["department"].ToString(),
-                                location = reader["location"].ToString(),
-                                deviceuser = reader["deviceuser"].ToString(),
-                                datepurchased = DateTime.Parse(reader["datepurchased"].ToString()),
-                                price = float.Parse(reader["price"].ToString()),
-                                HWdetail = reader["HWdetail"].ToString(),
-                                status = reader["status"].ToString(),
+                                assettag = reader["assettag"] is DBNull ? string.Empty : reader["assettag"].ToString(),
+                                assettype = reader["assettype"] is DBNull ? string.Empty : reader["assettype"].ToString(),
+                                devicename = reader["devicename"] is DBNull ? string.Empty : reader["devicename"].ToString(),
+                                brand = reader["brand"] is DBNull ? string.Empty : reader["brand"].ToString(),
+                                model = reader["model"] is DBNull ? string.Empty : reader["model"].ToString(),
+                                sn = reader["sn"] is DBNull ? string.Empty : reader["sn"].ToString(),
+                                department = reader["department"] is DBNull ? string.Empty : reader["department"].ToString(),
+                                location = reader["location"] is DBNull ? string.Empty : reader["location"].ToString(),
+                                deviceuser = reader["deviceuser"] is DBNull ? string.Empty : reader["deviceuser"].ToString(),
+                                datepurchased = reader["datepurchased"] is DBNull ? DateTime.MinValue : DateTime.Parse(reader["datepurchased"].ToString()),
+                                price = reader["price"] is DBNull ? 0.0f : float.Parse(reader["price"].ToString()),
+                                HWdetail = reader["HWdetail"] is DBNull ? string.Empty : reader["HWdetail"].ToString(),
+                                status = reader["status"] is DBNull ? string.Empty : reader["status"].ToString(),
+
                             };
                             // Set the BindingContext to the created object
                             this.BindingContext = myTableList;
@@ -116,34 +116,45 @@ namespace src_barcodescanner
             try
             {
                 sqlConnection.Open();
-                string queryString = $"Select * from dbo.tbldevice WHERE sn = '{Update_Sn.Text}' OR assettag= '{Update_Assettag.Text}'";
+                string queryString = $"Select * from dbo.tbldevice WHERE sn = '{Update_Search.Text}' OR assettag = '{Update_Search.Text}'";
                 SqlCommand command = new SqlCommand(queryString, sqlConnection);
                 SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
                 {
                     myTableList = new MyTableList
                     {
 
-                        assettag = reader["assettag"].ToString(),
-                        assettype = reader["assettype"].ToString(),
-                        devicename = reader["devicename"].ToString(),
-                        brand = reader["brand"].ToString(),
-                        model = reader["model"].ToString(),
-                        sn = reader["sn"].ToString(),
-                        department = reader["department"].ToString(),
-                        location = reader["location"].ToString(),
-                        deviceuser = reader["deviceuser"].ToString(),
-                        datepurchased = DateTime.Parse(reader["datepurchased"].ToString()),
-                        price = float.Parse(reader["price"].ToString()),
-                        HWdetail = reader["HWdetail"].ToString(),
-                        status = reader["status"].ToString(),
+                        assettag = reader["assettag"] is DBNull ? string.Empty : reader["assettag"].ToString(),
+                        assettype = reader["assettype"] is DBNull ? string.Empty : reader["assettype"].ToString(),
+                        devicename = reader["devicename"] is DBNull ? string.Empty : reader["devicename"].ToString(),
+                        brand = reader["brand"] is DBNull ? string.Empty : reader["brand"].ToString(),
+                        model = reader["model"] is DBNull ? string.Empty : reader["model"].ToString(),
+                        sn = reader["sn"] is DBNull ? string.Empty : reader["sn"].ToString(),
+                        department = reader["department"] is DBNull ? string.Empty : reader["department"].ToString(),
+                        location = reader["location"] is DBNull ? string.Empty : reader["location"].ToString(),
+                        deviceuser = reader["deviceuser"] is DBNull ? string.Empty : reader["deviceuser"].ToString(),
+                        datepurchased = reader["datepurchased"] is DBNull ? DateTime.MinValue : DateTime.Parse(reader["datepurchased"].ToString()),
+                        price = reader["price"] is DBNull ? 0.0f : float.Parse(reader["price"].ToString()),
+                        HWdetail = reader["HWdetail"] is DBNull ? string.Empty : reader["HWdetail"].ToString(),
+                        status = reader["status"] is DBNull ? string.Empty : reader["status"].ToString(),
                     };
                     // Set the BindingContext to the created object
                     this.BindingContext = myTableList;
                 }
 
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Alert", "No record found", "Ok");
+                }
+
                 reader.Close();
                 sqlConnection.Close();
+
+
+
             }
             catch (Exception ex)
             {
@@ -156,6 +167,16 @@ namespace src_barcodescanner
         {
 
             string selectedDepartment = Update_Department.SelectedItem as string;
+
+            // Display a confirmation prompt
+            bool result = await DisplayAlert("Confirmation", "Do you want to update the record?", "Yes", "No");
+
+            if (!result)
+            {
+                // User chose "No," so cancel the operation
+                return;
+            }
+
 
             try
             {
@@ -195,7 +216,7 @@ namespace src_barcodescanner
                     command.ExecuteNonQuery();
                 }
                 sqlConnection.Close();  // Close the connection in the finally block
-                await App.Current.MainPage.DisplayAlert("Alert", "Congrats you have Successfully Updated the row item", "Ok");
+                await App.Current.MainPage.DisplayAlert("Alert", "Congrats you have Successfully Updated the record", "Ok");
                 await Navigation.PushAsync(new MainPage());
             }
             catch (Exception ex)
@@ -203,6 +224,8 @@ namespace src_barcodescanner
                 await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "Ok");
             }
         }
+
+
 
 
     }

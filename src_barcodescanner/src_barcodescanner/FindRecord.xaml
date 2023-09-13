@@ -6,7 +6,7 @@
         <ScrollView>
             <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" >
 
-                <Frame CornerRadius="20" Grid.Row="0" BackgroundColor="#49688e" HeightRequest="100" Margin="0,-5,0,0">
+                <Frame  Grid.Row="0" BackgroundColor="#49688e" HeightRequest="100" >
                     <TableView>
                         <TableRoot>
                             <TableSection>
@@ -29,12 +29,15 @@
                     </TableView>
                 </Frame>
 
-                <Frame CornerRadius="20" Grid.Row="1" BackgroundColor="#49688e" HeightRequest="500" Margin="0,-5,0,0">
+                
+                
+                <Frame  Grid.Row="1" BackgroundColor="#49688e" HeightRequest="375" >
 
                     <ListView x:Name="MyFind" HasUnevenRows="True" Footer="">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
+                                    
                                     <Grid RowDefinitions="Auto,Auto,Auto">
 
                                         <Label Grid.Column="0" Grid.Row="1"  Text="Device Info" FontAttributes="Bold" FontSize="Title" TextColor="White"></Label>
@@ -82,7 +85,7 @@
                     </ListView>
             </Frame>
 
-                <Frame CornerRadius="20" Grid.Row="2" BackgroundColor="#49688e" HeightRequest="250" Margin="0,-5,0,0">
+                <Frame  Grid.Row="2" BackgroundColor="#49688e" HeightRequest="225" >
 
                     <ListView x:Name="Find_HWDetail" HasUnevenRows="True" Footer="">
                         <ListView.ItemTemplate>
