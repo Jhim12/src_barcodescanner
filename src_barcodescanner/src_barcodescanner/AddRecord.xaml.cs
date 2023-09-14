@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -49,109 +50,116 @@ namespace src_barcodescanner
             string serverusername = "sa";
             string serverpassword = "masterfile";
 
+            // This line of codes is the creadentials and connection string
+/*            string serverdbname = "src_db";
+            string servername = "10.0.0.144"; //10.0.0.144
+            string serverusername = "sa";
+            string serverpassword = "masterfile";*/
+
             string sqlconn = $"Data Source={servername};Initial Catalog={serverdbname};User ID={serverusername};Password={serverpassword}";
             sqlConnection = new SqlConnection(sqlconn);
             //This line of codes is the creadentials and connection string
 
             // This line codes is for asset tag to concatenate the Asset type, Date Today, and New Increment ID
-            try
-            {
-                sqlConnection.Open();
-
-                string query = "SELECT IDENT_CURRENT('tbldevice') + 1  AS NewIncrementValue";
-                SqlCommand command = new SqlCommand(query, sqlConnection);
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
+                try
                 {
-                    // Get the current date and format it as ddMMyyyy
-                    string currentDate = DateTime.Now.ToString("ddMMyyyy");
+                    sqlConnection.Open();
 
-                    // Get the new increment value
-                    int newIncrementValue = Convert.ToInt32(reader["NewIncrementValue"]);
+                    string query = "SELECT IDENT_CURRENT('tbldevice') + 1  AS NewIncrementValue";
+                    SqlCommand command = new SqlCommand(query, sqlConnection);
+                    SqlDataReader reader = command.ExecuteReader();
 
-                    string assetTag = currentDate;
-
-                    Add_Assettype.SelectedIndexChanged += (sender, e) =>
+                    if (reader.Read())
                     {
-                        if (Add_Assettype.SelectedIndex >= 0)
+                        // Get the current date and format it as ddMMyyyy
+                        string currentDate = DateTime.Now.ToString("ddMMyyyy");
+
+                        // Get the new increment value
+                        int newIncrementValue = Convert.ToInt32(reader["NewIncrementValue"]);
+
+                        string assetTag = currentDate;
+
+                        Add_Assettype.SelectedIndexChanged += (sender, e) =>
                         {
-                            string selectedAssetType = Add_Assettype.Items[Add_Assettype.SelectedIndex];
-
-                            // Define a prefix for each asset type
-                            string assetTagPrefix = "";
-
-                            // This is Combo box Set the text of the Entry based on the selected asset type
-                            switch (selectedAssetType)
+                            if (Add_Assettype.SelectedIndex >= 0)
                             {
-                                case "Desktop":
-                                    assetTagPrefix = "PC";
-                                    break;
-                                case "Printer":
-                                    assetTagPrefix = "PRN";
-                                    break;
-                                case "Access Point":
-                                    assetTagPrefix = "NET";
-                                    break;
-                                case "Switch":
-                                    assetTagPrefix = "NET";
-                                    break;
-                                case "Router":
-                                    assetTagPrefix = "NET";
-                                    break;
-                                case "Hub":
-                                    assetTagPrefix = "NET";
-                                    break;
-                                case "Laptop":
-                                    assetTagPrefix = "PC";
-                                    break;
-                                case "Thin Client":
-                                    assetTagPrefix = "PC";
-                                    break;
-                                case "Monitor":
-                                    assetTagPrefix = "PC";
-                                    break;
-                                case "KB/M":
-                                    assetTagPrefix = "PC";
-                                    break;
-                                case "Multimedia":
-                                    assetTagPrefix = "MM";
-                                    break;
-                                case "All-in-One":
-                                    assetTagPrefix = "PC";
-                                    break;
-                                case "Spare parts":
-                                    assetTagPrefix = "SP";
-                                    break;
-                                case "Camera":
-                                    assetTagPrefix = "CAM";
-                                    break;
-                                default:
-                                    assetTagPrefix = "";
-                                    break;
-                            }
-                            // This is Combo box Set the text of the Entry based on the selected asset type
+                                string selectedAssetType = Add_Assettype.Items[Add_Assettype.SelectedIndex];
 
-                            // Concatenate the prefix with the current date and increment value
-                            Add_Assettag.Text = assetTagPrefix + currentDate + newIncrementValue.ToString();
-                        }
-                    };
+                                // Define a prefix for each asset type
+                                string assetTagPrefix = "";
+
+                                // This is Combo box Set the text of the Entry based on the selected asset type
+                                switch (selectedAssetType)
+                                {
+                                    case "Desktop":
+                                        assetTagPrefix = "PC";
+                                        break;
+                                    case "Printer":
+                                        assetTagPrefix = "PRN";
+                                        break;
+                                    case "Access Point":
+                                        assetTagPrefix = "NET";
+                                        break;
+                                    case "Switch":
+                                        assetTagPrefix = "NET";
+                                        break;
+                                    case "Router":
+                                        assetTagPrefix = "NET";
+                                        break;
+                                    case "Hub":
+                                        assetTagPrefix = "NET";
+                                        break;
+                                    case "Laptop":
+                                        assetTagPrefix = "PC";
+                                        break;
+                                    case "Thin Client":
+                                        assetTagPrefix = "PC";
+                                        break;
+                                    case "Monitor":
+                                        assetTagPrefix = "PC";
+                                        break;
+                                    case "KB/M":
+                                        assetTagPrefix = "PC";
+                                        break;
+                                    case "Multimedia":
+                                        assetTagPrefix = "MM";
+                                        break;
+                                    case "All-in-One":
+                                        assetTagPrefix = "PC";
+                                        break;
+                                    case "Spare parts":
+                                        assetTagPrefix = "SP";
+                                        break;
+                                    case "Camera":
+                                        assetTagPrefix = "CAM";
+                                        break;
+                                    default:
+                                        assetTagPrefix = "";
+                                        break;
+                                }
+                                // This is Combo box Set the text of the Entry based on the selected asset type
+
+                                // Concatenate the prefix with the current date and increment value
+                                Add_Assettag.Text = assetTagPrefix + currentDate + newIncrementValue.ToString();
+                            }
+                        };
+
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    // Handle any exceptions that may occur while executing the query
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+
+                finally
+                {
 
                 }
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                // Handle any exceptions that may occur while executing the query
-                Console.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
-            // This line of codes is for asset tag to concatenate the Asset type, Date Today, and New Increment ID
-
-
+                // This line of codes is for asset tag to concatenate the Asset type, Date Today, and New Increment ID
+            
+            
             //END
         }
 
@@ -205,6 +213,7 @@ namespace src_barcodescanner
             string selectedDepartment = Add_Department.SelectedItem as string;
 
             DateTime selectedDate = Add_Datepurchased.Date;
+            DateTime DateTodayInve = Add_SystemDate.Date;
 
             // Check if the device name is empty
             if (string.IsNullOrWhiteSpace(assettag))
@@ -262,7 +271,24 @@ namespace src_barcodescanner
 
             try
             {
-                sqlConnection.Open();
+
+                // Check if a record with the same SN or asset tag already exists
+                using (SqlCommand checkCommand = new SqlCommand("SELECT COUNT(*) FROM dbo.tbldevice WHERE sn = @sn OR assettag = @assettag", sqlConnection))
+                {
+                    checkCommand.Parameters.AddWithValue("@sn", sn);
+                    checkCommand.Parameters.AddWithValue("@assettag", assettag);
+
+                    int existingRecordCount = (int)checkCommand.ExecuteScalar();
+
+                    if (existingRecordCount > 0)
+                    {
+                        // A record with the same SN or asset tag already exists
+                        await App.Current.MainPage.DisplayAlert("Duplicate Record", "A record with the same SN or asset tag already exists.", "Ok");
+                        return; // Exit the method without inserting the duplicate record
+                    }
+                }
+
+                // If no duplicate record found, proceed to insert the new record
                 using (SqlCommand command = new SqlCommand("INSERT INTO dbo.tbldevice (assettag, assettype, devicename, brand, model, sn, department, datepurchased, price, HWdetail, systemdate)" +
                     " VALUES (@assettag, @assettype, @devicename, @brand, @model, @sn, @department, @datepurchased, @price, @HWdetail, @systemdate)", sqlConnection))
                 {
@@ -303,14 +329,14 @@ namespace src_barcodescanner
 
                     // Convert and set the DateTime value with SqlDbType.Date
                     SqlParameter systemdateParameter = new SqlParameter("@systemdate", System.Data.SqlDbType.Date);
-                    systemdateParameter.Value = selectedDate;
+                    systemdateParameter.Value = DateTodayInve;
                     command.Parameters.Add(systemdateParameter);
 
                     // Execute the SQL command
                     command.ExecuteNonQuery();
                 }
                 sqlConnection.Close();
-                await App.Current.MainPage.DisplayAlert("Alert", "Congrats you just posted data", "Ok");
+                await App.Current.MainPage.DisplayAlert("Alert", "Congrats you just add a record", "Ok");
 
                 // Clear fields
                 Add_Assettag.Text = string.Empty;

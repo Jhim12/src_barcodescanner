@@ -140,13 +140,20 @@
                 </Frame>
 
                 <Frame Grid.Row="2" BackgroundColor="#49688e" HeightRequest="50" >
-                    <StackLayout>
-                        <Grid RowDefinitions="Auto,Auto,Auto">
+                    <TableView>
+                        <TableRoot>
+                            <TableSection>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="Date today:" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                        <DatePicker IsEnabled="False" Format="dd/MM/yyyy" x:Name="Add_SystemDate" WidthRequest="125"></DatePicker>
+                                        <Button x:Name="Add_Record"  Clicked="Add_Record_Clicked" Text="Add Record" TextColor="Black" BackgroundColor="white" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
+                                    </StackLayout>
+                                </ViewCell>
 
-                                <Button x:Name="Add_Record" Grid.Row="1" Clicked="Add_Record_Clicked" Text="Add Record" TextColor="Black" BackgroundColor="white" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
-
-                            </Grid>
-                    </StackLayout>
+                            </TableSection>
+                        </TableRoot>
+                    </TableView>
                 </Frame>
 
             </Grid>
