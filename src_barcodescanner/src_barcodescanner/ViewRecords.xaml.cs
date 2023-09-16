@@ -37,7 +37,7 @@ namespace src_barcodescanner
         public ViewRecords()
         {
             InitializeComponent();
-            // This line of codes is the creadentials and connection string
+            // This line of codes is the creadentials and connection string     
 
             string serverdbname = "src_db_testing";
             string servername = "10.0.0.3";
@@ -102,6 +102,7 @@ namespace src_barcodescanner
                 reader.Close();
                 sqlConnection.Close();
 
+
                 MyViewRecords.ItemsSource = myTableLists;
             }
             catch (Exception ex)
@@ -128,7 +129,7 @@ namespace src_barcodescanner
                 Debug.WriteLine($"Selected End Date: {selectedEndDate}");
 
                 // Modify your SQL query to filter records within the selected date range
-                string queryString = "SELECT * FROM dbo.tbldevice WHERE datepurchased >= @StartDate AND datepurchased <= @EndDate ORDER BY id DESC";
+                string queryString = "SELECT * FROM dbo.tbldevice WHERE systemdate >= @StartDate AND systemdate <= @EndDate ORDER BY id DESC";
                 SqlCommand command = new SqlCommand(queryString, sqlConnection);
                 command.Parameters.AddWithValue("@StartDate", selectedStartDate);
                 command.Parameters.AddWithValue("@EndDate", selectedEndDate);
