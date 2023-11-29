@@ -48,16 +48,16 @@ namespace src_barcodescanner
 		{
 			InitializeComponent ();
             // This line of codes is the creadentials and connection string
-            string serverdbname = "src_db_testing";
-            string servername = "10.0.0.3";
-            string serverusername = "sa";
-            string serverpassword = "masterfile";
+            /*            string serverdbname = "src_db_testing";
+                        string servername = "10.0.0.3";
+                        string serverusername = "sa";
+                        string serverpassword = "masterfile";*/
 
-/*            // This line of codes is the creadentials and connection string
+            // This line of codes is the creadentials and connection string
             string serverdbname = "src_db";
             string servername = "10.0.0.144"; //10.0.0.144
             string serverusername = "sa";
-            string serverpassword = "masterfile";*/
+            string serverpassword = "masterfile";
 
             string sqlconn = $"Data Source={servername};Initial Catalog={serverdbname};User ID={serverusername};Password={serverpassword}";
             sqlConnection = new SqlConnection(sqlconn);
@@ -198,7 +198,6 @@ namespace src_barcodescanner
                 string departmentTobeUpdated = selectedDepartment;
                 string locationTobeUpdated = Update_Location.Text;
                 string deviceuserTobeUpdated = Update_Deviceuser.Text;
-                DateTime datepurchasedTobeUpdated = Update_Datepurchased.Date;
                 string priceTobeUpdated = Update_Price.Text;
                 string HWdetailTobeUpdated = Update_HWdetail.Text;
                 string statusTobeUpdated = Update_Status.Text;
@@ -212,7 +211,6 @@ namespace src_barcodescanner
                                     $" department ='{departmentTobeUpdated}'," +
                                     $" location ='{locationTobeUpdated}'," +
                                     $" deviceuser ='{deviceuserTobeUpdated}'," +
-                                    $" datepurchased ='{datepurchasedTobeUpdated}'," +
                                     $" price ='{priceTobeUpdated}'," +
                                     $" HWdetail ='{HWdetailTobeUpdated}'," +
                                     $" status ='{statusTobeUpdated}' WHERE sn='{snTobeUpdated}'";

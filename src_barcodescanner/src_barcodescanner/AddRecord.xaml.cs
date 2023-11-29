@@ -50,8 +50,8 @@ namespace src_barcodescanner
             string serverusername = "sa";
             string serverpassword = "masterfile";
 
-            // This line of codes is the creadentials and connection string
-/*            string serverdbname = "src_db";
+/*            // This line of codes is the creadentials and connection string
+            string serverdbname = "src_db";
             string servername = "10.0.0.144"; //10.0.0.144
             string serverusername = "sa";
             string serverpassword = "masterfile";*/
