@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src_barcodescanner",
+    "\\src_barcodescanner\\src_barcodescanner"
   ],
-  "SelectedNode": "\\src_barcodescanner.sln",
+  "SelectedNode": "\\src_barcodescanner\\src_barcodescanner.Android",
   "PreviewInSolutionExplorer": false
 }

@@ -8,8 +8,7 @@
         <ScrollView>
             
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" >
-
-
+            
                 <Frame Grid.Row="0" BackgroundColor="#49688e"  HeightRequest="475">
                     <TableView>
                         <TableRoot>

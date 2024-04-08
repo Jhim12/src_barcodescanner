@@ -50,15 +50,17 @@ namespace src_barcodescanner
             string serverusername = "sa";
             string serverpassword = "masterfile";
 
-/*            // This line of codes is the creadentials and connection string
-            string serverdbname = "src_db";
-            string servername = "10.0.0.144"; //10.0.0.144
-            string serverusername = "sa";
-            string serverpassword = "masterfile";*/
+            // This line of codes is the creadentials and connection string
+            /*            string serverdbname = "src_db";
+                        string servername = "10.0.0.144"; //10.0.0.144
+                        string serverusername = "sa";
+                        string serverpassword = "masterfile";*/
 
             string sqlconn = $"Data Source={servername};Initial Catalog={serverdbname};User ID={serverusername};Password={serverpassword}";
             sqlConnection = new SqlConnection(sqlconn);
             //This line of codes is the creadentials and connection string
+
+
 
             // This line codes is for asset tag to concatenate the Asset type, Date Today, and New Increment ID
                 try
@@ -77,7 +79,6 @@ namespace src_barcodescanner
                         // Get the new increment value
                         int newIncrementValue = Convert.ToInt32(reader["NewIncrementValue"]);
 
-                        string assetTag = currentDate;
 
                         Add_Assettype.SelectedIndexChanged += (sender, e) =>
                         {
