@@ -85,7 +85,8 @@
                     </ListView>
             </Frame>
 
-                <Frame  Grid.Row="2" BackgroundColor="#49688e" HeightRequest="225" >
+
+                <Frame Margin="10,10,10,0" HeightRequest="200"  CornerRadius="10" Grid.Row="3" HasShadow="True">
 
                     <ListView x:Name="Find_HWDetail" HasUnevenRows="True" Footer="">
                         <ListView.ItemTemplate>
@@ -93,10 +94,10 @@
                                 <ViewCell>
                                     <Grid RowDefinitions="Auto,Auto,Auto">
 
-                                        <Label Grid.Column="0" Grid.Row="1"  Text="Specification" FontAttributes="Bold" FontSize="Title" TextColor="White"></Label>
+                                        <Label Grid.Column="0" Grid.Row="1"  Text="Specification" FontAttributes="Bold" FontSize="Title" TextColor="Black"></Label>
 
 
-                                        <Label Grid.Column="0" Grid.Row="2" Text="{Binding HWdetail}" TextColor="black" ></Label>
+                                        <Label Grid.Column="0" Grid.Row="2" Text="" TextColor="black" ></Label>
 
                                     </Grid>
                                 </ViewCell>
